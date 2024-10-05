@@ -84,6 +84,7 @@ def load_values():
   load_factions()
   load_merchants()
   load_merchant_types()
+  load_npcs()
 
 
 from table_data.merchant_type import insert_merchants as insert_merchant_type_statement
@@ -136,6 +137,26 @@ def load_merchants():
           print("Loading data for table {}: ".format(table_name), end='')
           cursor = conn.cursor()
           cursor.execute(insert_merchant_statement)
+          conn.commit()
+      except mysql.connector.Error as err:
+            print(err.msg)
+      else:
+          print("OK")
+      finally:
+         cursor.close()
+    else:
+      print("Couldn't connect to DB")
+    conn.close()
+
+from table_data.npcs import insert_npcs as insert_npc_statement
+def load_npcs():
+    conn = connect_to_db()
+    if conn and conn.is_connected():
+      table_name = 'npc'
+      try:
+          print("Loading data for table {}: ".format(table_name), end='')
+          cursor = conn.cursor()
+          cursor.execute(insert_npc_statement)
           conn.commit()
       except mysql.connector.Error as err:
             print(err.msg)
