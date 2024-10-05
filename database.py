@@ -1,6 +1,6 @@
 import mysql.connector
 from mysql.connector import errorcode
-from setup import TABLES
+from table_data.setup import TABLES
 import json
 from table_data.factions import insert_factions
 from table_data.npcs import insert_npcs
