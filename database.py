@@ -7,6 +7,11 @@ from table_data.npcs import insert_npcs
 db_file = 'db.json'
 db_name = 'morrowind_tables'
 
+def setup_db():
+    create_database()
+    create_tables()
+    load_values()
+
 def connect_to_db():
   try:
       data = json.load(open(db_file))
