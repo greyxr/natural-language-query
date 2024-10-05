@@ -42,13 +42,3 @@ TABLES['merchant_types'] = (
     "FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName)"
     ");"
 )
-
-TABLES['items'] = (
-    "CREATE TABLE items ("
-    "ID VARCHAR(30) PRIMARY KEY,"
-    "ItemName VARCHAR(30) NOT NULL,"
-    "ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Books','Misc') NOT NULL,"
-    "ItemWeight FLOAT(10,2),"
-    "ItemValue INT UNSIGNED"
-    ");"
-)
