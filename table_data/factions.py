@@ -1,223 +1,223 @@
 insert_factions = [
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Ashlanders',0,'Clanfriend');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Blades',0,'Novice');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Camonna Tong',0,'Bully');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Census and Excise',0,'Novice');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Aundae',0,'Cattle');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Berne',0,'Cattle');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Quarra',0,'Cattle');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Fighters Guild',0,'Associate');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Hlaalu',0,'Hireling');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Cult',0,'Layman');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Knights',0,'Aspirant');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Legion',0,'Recruit');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Mages Guild',0,'Associate');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Morag Tong',0,'Associate');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Nerevarine',0,'Nerevarine');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Redoran',0,'Hireling');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Sixth House',0,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Talos Cult',0,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Telvanni',0,'Hireling');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Temple',0,'Layman');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Thieves Guild',0,'Toad');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Twin Lamps',0,'Twin Lamps');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Ashlanders',1,'Hearthfriend');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Blades',1,'Apprentice');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Camonna Tong',1,'Tough');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Census and Excise',1,'Apprentice');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Aundae',1,'Neonate');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Berne',1,'Neonate');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Quarra',1,'Neonate');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Fighters Guild',1,'Apprentice');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Hlaalu',1,'Retainer');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Cult',1,'Novice');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Knights',1,'Squire');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Legion',1,'Spearman');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Mages Guild',1,'Apprentice');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Morag Tong',1,'Blind Thrall');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Nerevarine',1,'Nerevarine');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Redoran',1,'Retainer');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Sixth House',1,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Talos Cult',1,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Telvanni',1,'Retainer');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Temple',1,'Novice');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Thieves Guild',1,'Wet Ear');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Twin Lamps',1,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Ashlanders',2,'Brother');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Blades',2,'Journeyman');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Camonna Tong',2,'Thug');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Census and Excise',2,'Clerk');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Aundae',2,'Minion');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Berne',2,'Minion');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Quarra',2,'Minion');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Fighters Guild',2,'Journeyman');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Hlaalu',2,'Oathman');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Cult',2,'Initiate');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Knights',2,'Gallant');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Legion',2,'Trooper');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Mages Guild',2,'Journeyman');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Morag Tong',2,'Thrall');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Nerevarine',2,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Redoran',2,'Oathman');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Sixth House',2,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Talos Cult',2,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Telvanni',2,'Oathman');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Temple',2,'Initiate');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Thieves Guild',2,'Footpad');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Twin Lamps',2,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Ashlanders',3,'Initiate');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Blades',3,'Finder');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Camonna Tong',3,'Brute');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Census and Excise',3,'Taxman');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Aundae',3,'Servant');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Berne',3,'Servant');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Quarra',3,'Servant');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Fighters Guild',3,'Swordsman');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Hlaalu',3,'Lawman');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Cult',3,'Acolyte');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Knights',3,'Chevalier');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Legion',3,'Agent');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Mages Guild',3,'Evoker');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Morag Tong',3,'White Thrall');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Nerevarine',3,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Redoran',3,'Lawman');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Sixth House',3,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Talos Cult',3,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Telvanni',3,'Lawman');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Temple',3,'Acolyte');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Thieves Guild',3,'Blackcap');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Twin Lamps',3,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Ashlanders',4,'Clanholder');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Blades',4,'Traveller');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Camonna Tong',4,'Lifetaker');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Census and Excise',4,'Taxtaker');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Aundae',4,'Stalker');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Berne',4,'Stalker');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Quarra',4,'Stalker');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Fighters Guild',4,'Protector');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Hlaalu',4,'Kinsman');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Cult',4,'Adept');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Knights',4,'Keeper');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Legion',4,'Champion');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Mages Guild',4,'Conjurer');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Morag Tong',4,'Thinker');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Nerevarine',4,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Redoran',4,'Kinsman');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Sixth House',4,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Talos Cult',4,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Telvanni',4,'Mouth');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Temple',4,'Adept');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Thieves Guild',4,'Operative');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Twin Lamps',4,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Ashlanders',5,'Guide');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Blades',5,'Operative');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Camonna Tong',5,'Chiller');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Census and Excise',5,'Operative');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Aundae',5,'Bloodkin');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Berne',5,'Bloodkin');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Quarra',5,'Bloodkin');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Fighters Guild',5,'Defender');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Hlaalu',5,'House Cousin');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Cult',5,'Disciple');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Knights',5,'Knight Brother');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Legion',5,'Knight Errant');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Mages Guild',5,'Magician');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Morag Tong',5,'Brother');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Nerevarine',5,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Redoran',5,'House Cousin');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Sixth House',5,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Talos Cult',5,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Telvanni',5,'Spellwright');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Temple',5,'Curate');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Thieves Guild',5,'Bandit');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Twin Lamps',5,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Ashlanders',6,'Champion');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Blades',6,'Agent');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Camonna Tong',6,'Hammer');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Census and Excise',6,'Agent');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Aundae',6,'Reaver');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Berne',6,'Reaver');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Quarra',6,'Reaver');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Fighters Guild',6,'Warder');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Hlaalu',6,'House Brother');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Cult',6,'Oracle');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Knights',6,'Commander');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Legion',6,'Knight Bachelor');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Mages Guild',6,'Warlock');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Morag Tong',6,'Knower');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Nerevarine',6,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Redoran',6,'House Brother');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Sixth House',6,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Talos Cult',6,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Telvanni',6,'Wizard');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Temple',6,'Disciple');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Thieves Guild',6,'Captain');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Twin Lamps',6,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Ashlanders',7,'Gulakhan');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Blades',7,'Spy');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Camonna Tong',7,'Old Man');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Census and Excise',7,'Excise Officer');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Aundae',7,'Lord');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Berne',7,'Lord');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Quarra',7,'Lord');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Fighters Guild',7,'Guardian');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Hlaalu',7,'House Father');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Cult',7,'Invoker');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Knights',7,'Marshal');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Legion',7,'Knight Protector');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Mages Guild',7,'Wizard');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Morag Tong',7,'Master');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Nerevarine',7,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Redoran',7,'House Father');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Sixth House',7,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Talos Cult',7,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Telvanni',7,'Master');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Temple',7,'Diviner');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Thieves Guild',7,'Ringleader');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Twin Lamps',7,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Ashlanders',8,'Farseer');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Blades',8,'Spymaster');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Camonna Tong',8,'Strongman');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Census and Excise',8,'Inspector');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Aundae',8,'Elder');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Berne',8,'Elder');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Quarra',8,'Elder');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Fighters Guild',8,'Champion');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Hlaalu',8,'Councilman');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Cult',8,'Theurgist');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Knights',8,'Seneschal');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Legion',8,'Knight of the Garland');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Mages Guild',8,'Master Wizard');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Morag Tong',8,'Exalted Master');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Nerevarine',8,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Redoran',8,'Councilman');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Sixth House',8,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Talos Cult',8,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Telvanni',8,'Magister');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Temple',8,'Master');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Thieves Guild',8,'Mastermind');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Twin Lamps',8,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Ashlanders',9,'Ashkhan');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Blades',9,'Grand Spymaster');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Camonna Tong',9,'Kingpin');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Census and Excise',9,'Grand Inspector');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Aundae',9,'Ancient');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Berne',9,'Ancient');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Quarra',9,'Ancient');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Fighters Guild',9,'Master');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Hlaalu',9,'Grandmaster');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Cult',9,'Primate');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Knights',9,'Paladin');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Legion',9,'Knight of the Imperial Dragon');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Mages Guild',9,'Arch-Mage');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Morag Tong',9,'Grandmaster');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Nerevarine',9,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Redoran',9,'Archmaster');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Sixth House',9,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Talos Cult',9,NULL);"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Telvanni',9,'Archmagister');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Temple',9,'Patriarch');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Thieves Guild',9,'Master Thief');"
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Twin Lamps',9,NULL);"
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Ashlanders',0,'Clanfriend');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Blades',0,'Novice');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Camonna Tong',0,'Bully');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Census and Excise',0,'Novice');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Aundae',0,'Cattle');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Berne',0,'Cattle');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Quarra',0,'Cattle');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Fighters Guild',0,'Associate');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Hlaalu',0,'Hireling');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Cult',0,'Layman');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Knights',0,'Aspirant');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Legion',0,'Recruit');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Mages Guild',0,'Associate');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Morag Tong',0,'Associate');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Nerevarine',0,'Nerevarine');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Redoran',0,'Hireling');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Sixth House',0,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Talos Cult',0,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Telvanni',0,'Hireling');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Temple',0,'Layman');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Thieves Guild',0,'Toad');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Twin Lamps',0,'Twin Lamps');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Ashlanders',1,'Hearthfriend');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Blades',1,'Apprentice');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Camonna Tong',1,'Tough');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Census and Excise',1,'Apprentice');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Aundae',1,'Neonate');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Berne',1,'Neonate');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Quarra',1,'Neonate');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Fighters Guild',1,'Apprentice');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Hlaalu',1,'Retainer');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Cult',1,'Novice');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Knights',1,'Squire');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Legion',1,'Spearman');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Mages Guild',1,'Apprentice');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Morag Tong',1,'Blind Thrall');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Nerevarine',1,'Nerevarine');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Redoran',1,'Retainer');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Sixth House',1,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Talos Cult',1,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Telvanni',1,'Retainer');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Temple',1,'Novice');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Thieves Guild',1,'Wet Ear');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Twin Lamps',1,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Ashlanders',2,'Brother');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Blades',2,'Journeyman');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Camonna Tong',2,'Thug');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Census and Excise',2,'Clerk');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Aundae',2,'Minion');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Berne',2,'Minion');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Quarra',2,'Minion');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Fighters Guild',2,'Journeyman');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Hlaalu',2,'Oathman');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Cult',2,'Initiate');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Knights',2,'Gallant');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Legion',2,'Trooper');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Mages Guild',2,'Journeyman');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Morag Tong',2,'Thrall');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Nerevarine',2,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Redoran',2,'Oathman');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Sixth House',2,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Talos Cult',2,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Telvanni',2,'Oathman');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Temple',2,'Initiate');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Thieves Guild',2,'Footpad');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Twin Lamps',2,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Ashlanders',3,'Initiate');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Blades',3,'Finder');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Camonna Tong',3,'Brute');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Census and Excise',3,'Taxman');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Aundae',3,'Servant');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Berne',3,'Servant');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Quarra',3,'Servant');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Fighters Guild',3,'Swordsman');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Hlaalu',3,'Lawman');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Cult',3,'Acolyte');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Knights',3,'Chevalier');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Legion',3,'Agent');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Mages Guild',3,'Evoker');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Morag Tong',3,'White Thrall');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Nerevarine',3,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Redoran',3,'Lawman');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Sixth House',3,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Talos Cult',3,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Telvanni',3,'Lawman');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Temple',3,'Acolyte');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Thieves Guild',3,'Blackcap');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Twin Lamps',3,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Ashlanders',4,'Clanholder');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Blades',4,'Traveller');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Camonna Tong',4,'Lifetaker');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Census and Excise',4,'Taxtaker');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Aundae',4,'Stalker');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Berne',4,'Stalker');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Quarra',4,'Stalker');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Fighters Guild',4,'Protector');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Hlaalu',4,'Kinsman');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Cult',4,'Adept');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Knights',4,'Keeper');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Legion',4,'Champion');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Mages Guild',4,'Conjurer');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Morag Tong',4,'Thinker');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Nerevarine',4,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Redoran',4,'Kinsman');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Sixth House',4,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Talos Cult',4,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Telvanni',4,'Mouth');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Temple',4,'Adept');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Thieves Guild',4,'Operative');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Twin Lamps',4,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Ashlanders',5,'Guide');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Blades',5,'Operative');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Camonna Tong',5,'Chiller');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Census and Excise',5,'Operative');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Aundae',5,'Bloodkin');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Berne',5,'Bloodkin');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Quarra',5,'Bloodkin');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Fighters Guild',5,'Defender');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Hlaalu',5,'House Cousin');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Cult',5,'Disciple');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Knights',5,'Knight Brother');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Legion',5,'Knight Errant');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Mages Guild',5,'Magician');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Morag Tong',5,'Brother');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Nerevarine',5,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Redoran',5,'House Cousin');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Sixth House',5,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Talos Cult',5,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Telvanni',5,'Spellwright');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Temple',5,'Curate');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Thieves Guild',5,'Bandit');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Twin Lamps',5,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Ashlanders',6,'Champion');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Blades',6,'Agent');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Camonna Tong',6,'Hammer');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Census and Excise',6,'Agent');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Aundae',6,'Reaver');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Berne',6,'Reaver');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Quarra',6,'Reaver');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Fighters Guild',6,'Warder');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Hlaalu',6,'House Brother');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Cult',6,'Oracle');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Knights',6,'Commander');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Legion',6,'Knight Bachelor');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Mages Guild',6,'Warlock');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Morag Tong',6,'Knower');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Nerevarine',6,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Redoran',6,'House Brother');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Sixth House',6,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Talos Cult',6,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Telvanni',6,'Wizard');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Temple',6,'Disciple');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Thieves Guild',6,'Captain');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Twin Lamps',6,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Ashlanders',7,'Gulakhan');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Blades',7,'Spy');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Camonna Tong',7,'Old Man');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Census and Excise',7,'Excise Officer');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Aundae',7,'Lord');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Berne',7,'Lord');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Quarra',7,'Lord');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Fighters Guild',7,'Guardian');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Hlaalu',7,'House Father');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Cult',7,'Invoker');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Knights',7,'Marshal');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Legion',7,'Knight Protector');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Mages Guild',7,'Wizard');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Morag Tong',7,'Master');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Nerevarine',7,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Redoran',7,'House Father');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Sixth House',7,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Talos Cult',7,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Telvanni',7,'Master');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Temple',7,'Diviner');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Thieves Guild',7,'Ringleader');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Twin Lamps',7,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Ashlanders',8,'Farseer');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Blades',8,'Spymaster');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Camonna Tong',8,'Strongman');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Census and Excise',8,'Inspector');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Aundae',8,'Elder');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Berne',8,'Elder');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Quarra',8,'Elder');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Fighters Guild',8,'Champion');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Hlaalu',8,'Councilman');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Cult',8,'Theurgist');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Knights',8,'Seneschal');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Legion',8,'Knight of the Garland');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Mages Guild',8,'Master Wizard');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Morag Tong',8,'Exalted Master');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Nerevarine',8,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Redoran',8,'Councilman');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Sixth House',8,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Talos Cult',8,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Telvanni',8,'Magister');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Temple',8,'Master');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Thieves Guild',8,'Mastermind');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Twin Lamps',8,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Ashlanders',9,'Ashkhan');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Blades',9,'Grand Spymaster');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Camonna Tong',9,'Kingpin');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Census and Excise',9,'Grand Inspector');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Aundae',9,'Ancient');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Berne',9,'Ancient');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Clan Quarra',9,'Ancient');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Fighters Guild',9,'Master');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Hlaalu',9,'Grandmaster');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Cult',9,'Primate');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Knights',9,'Paladin');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Imperial Legion',9,'Knight of the Imperial Dragon');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Mages Guild',9,'Arch-Mage');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Morag Tong',9,'Grandmaster');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Nerevarine',9,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Redoran',9,'Archmaster');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Sixth House',9,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Talos Cult',9,NULL);",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Telvanni',9,'Archmagister');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Temple',9,'Patriarch');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Thieves Guild',9,'Master Thief');",
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Twin Lamps',9,NULL);",
 "INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('None, 0, NULL);"
 ]
