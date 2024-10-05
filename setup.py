@@ -27,7 +27,7 @@ TABLES['merchant'] = (
     "CREATE TABLE merchant ("
     "MerchantName VARCHAR(30) PRIMARY KEY,"
     "AvailableGold INT UNSIGNED,"
-    "Location VARCHAR(30),"
+    "Location VARCHAR(300),"
     "Faction VARCHAR(30),"
     "RankNumber TINYINT UNSIGNED NOT NULL,"
     "FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber)"
@@ -37,7 +37,7 @@ TABLES['merchant'] = (
 TABLES['merchant_types'] = (
     "CREATE TABLE merchant_types ("
     "MerchantName VARCHAR(30),"
-    "ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Books','Misc') NOT NULL,"
+    "ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,"
     "PRIMARY KEY (MerchantName, ItemType),"
     "FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName)"
     ");"

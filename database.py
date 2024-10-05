@@ -81,22 +81,68 @@ def create_database():
           print(err)
           
 def load_values():
-  conn = connect_to_db()
-  if conn and conn.is_connected():
-   for i in range (0,1):
-    table_name = 'npcs'
-    try:
-        print("Loading data for table {}: ".format(table_name), end='')
-        conn.cursor().execute(insert_npcs)
-    except mysql.connector.Error as err:
-        if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
-            print("already exists.")
-        else:
+  load_factions()
+  load_merchants()
+  load_merchant_types()
+
+
+from table_data.merchant_type import insert_merchants as insert_merchant_type_statement
+def load_merchant_types():
+    conn = connect_to_db()
+    if conn and conn.is_connected():
+      table_name = 'merchant_types'
+      try:
+          print("Loading data for table {}: ".format(table_name), end='')
+          cursor = conn.cursor()
+          for statement in insert_merchant_type_statement:
+            cursor.execute(statement)
+          conn.commit()
+      except mysql.connector.Error as err:
             print(err.msg)
+      else:
+          print("OK")
+      finally:
+         cursor.close()
     else:
-        print("OK")
-  else:
-    print("Couldn't connect to DB")
-  conn.cursor().close()
-  conn.close()
-   
+      print("Couldn't connect to DB")
+    conn.close()
+
+def load_factions():
+    conn = connect_to_db()
+    if conn and conn.is_connected():
+      table_name = 'factions'
+      try:
+          print("Loading data for table {}: ".format(table_name), end='')
+          cursor = conn.cursor()
+          for statement in insert_factions:
+            cursor.execute(statement)
+          conn.commit()
+      except mysql.connector.Error as err:
+            print(err.msg)
+      else:
+          print("OK")
+      finally:
+         cursor.close()
+    else:
+      print("Couldn't connect to DB")
+    conn.close()
+
+from table_data.merchants import insert_merchant as insert_merchant_statement
+def load_merchants():
+    conn = connect_to_db()
+    if conn and conn.is_connected():
+      table_name = 'merchant'
+      try:
+          print("Loading data for table {}: ".format(table_name), end='')
+          cursor = conn.cursor()
+          cursor.execute(insert_merchant_statement)
+          conn.commit()
+      except mysql.connector.Error as err:
+            print(err.msg)
+      else:
+          print("OK")
+      finally:
+         cursor.close()
+    else:
+      print("Couldn't connect to DB")
+    conn.close()

@@ -219,5 +219,5 @@ insert_factions = [
 "INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Temple',9,'Patriarch');",
 "INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Thieves Guild',9,'Master Thief');",
 "INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('Twin Lamps',9,NULL);",
-"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('None, 0, NULL);"
+"INSERT INTO faction (Faction,RankNumber,RankName) VALUES ('None', 0, NULL);"
 ]
