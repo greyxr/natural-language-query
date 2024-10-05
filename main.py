@@ -5,9 +5,10 @@ api_file = json.load(open('api.json'))
 # openai.api_key = api_file["api_key"]
 
 def main():
-    create_database()
-    create_tables()
-    call_gpt()
+    #create_database()
+    #create_tables()
+    load_values()
+    #call_gpt()
 
 
 def call_gpt():

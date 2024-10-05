@@ -2,6 +2,8 @@ import mysql.connector
 from mysql.connector import errorcode
 from setup import TABLES
 import json
+from table_data.factions import insert_factions
+from table_data.npcs import insert_npcs
 db_file = 'db.json'
 db_name = 'morrowind_tables'
 
@@ -79,4 +81,22 @@ def create_database():
           print(err)
           
 def load_values():
-  ...
+  conn = connect_to_db()
+  if conn and conn.is_connected():
+   for i in range (0,1):
+    table_name = 'npcs'
+    try:
+        print("Loading data for table {}: ".format(table_name), end='')
+        conn.cursor().execute(insert_npcs)
+    except mysql.connector.Error as err:
+        if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
+            print("already exists.")
+        else:
+            print(err.msg)
+    else:
+        print("OK")
+  else:
+    print("Couldn't connect to DB")
+  conn.cursor().close()
+  conn.close()
+   

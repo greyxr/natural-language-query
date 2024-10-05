@@ -2,9 +2,9 @@ TABLES = {}
 
 TABLES['faction'] = (
     "CREATE TABLE faction ("
-    "Faction VARCHAR(30) NOT NULL,"
+    "Faction VARCHAR(30),"
     "RankNumber TINYINT UNSIGNED NOT NULL,"
-    "RankName VARCHAR(30) UNIQUE,"
+    "RankName VARCHAR(30),"
     "Primary Key (Faction, RankNumber),"
     "CHECK (RankNumber <= 9)"
     ");"
@@ -12,7 +12,7 @@ TABLES['faction'] = (
 
 TABLES['npc'] = (
     "CREATE TABLE npc ("
-    "ID INT UNSIGNED PRIMARY Key,"
+    "ID VARCHAR(30) PRIMARY KEY,"
     "NpcName VARCHAR(30) NOT NULL,"
     "NpcLevel INT UNSIGNED NOT NULL,"
     "Faction VARCHAR(30),"
