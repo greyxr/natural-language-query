@@ -1,9 +1,12 @@
 import mysql.connector
+import json
 from mysql.connector import errorcode
 from table_data.setup import TABLES
-import json
 from table_data.factions import insert_factions
 from table_data.npcs import insert_npcs
+from table_data.merchant_type import insert_merchants as insert_merchant_type_statement
+from table_data.merchants import insert_merchant as insert_merchant_statement
+from table_data.npcs import insert_npcs as insert_npc_statement
 db_file = 'db.json'
 db_name = 'morrowind_tables'
 
@@ -90,8 +93,6 @@ def load_values():
   load_merchant_types()
   load_npcs()
 
-
-from table_data.merchant_type import insert_merchants as insert_merchant_type_statement
 def load_merchant_types():
     conn = connect_to_db()
     if conn and conn.is_connected():
@@ -132,7 +133,6 @@ def load_factions():
       print("Couldn't connect to DB")
     conn.close()
 
-from table_data.merchants import insert_merchant as insert_merchant_statement
 def load_merchants():
     conn = connect_to_db()
     if conn and conn.is_connected():
@@ -152,7 +152,6 @@ def load_merchants():
       print("Couldn't connect to DB")
     conn.close()
 
-from table_data.npcs import insert_npcs as insert_npc_statement
 def load_npcs():
     conn = connect_to_db()
     if conn and conn.is_connected():

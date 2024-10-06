@@ -1,7 +1,7 @@
 import json
 import sys
 from openai import OpenAI
-from database import *
+from database import setup_db, execute_query
 from table_data.setup import TABLES
 
 api_file = json.load(open('api.json'))
@@ -35,7 +35,7 @@ strategies = {
 }
 
 def main():
-    #setup_db()
+    setup_db()
     try_strategies()
 
 questions = [
