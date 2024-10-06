@@ -34,10 +34,6 @@ strategies = {
                    getSql)
 }
 
-def main():
-    setup_db()
-    try_strategies()
-
 questions = [
     'Who can I sell a weapon to within a Fighters Guild?',
     'Who is the NPC in the Telvanni faction with the highest rank number, and what is their rank name?',
@@ -55,6 +51,10 @@ failed = [
     'Who is ranked highest in Telvanni?',
     'Of the merchants that are also NPCs, which class is most common?'
 ]
+
+def main():
+    setup_db()
+    try_strategies()
 
 def fix_query(content, question):
     fix_statement = 'You gave this MySQL response to this question given the previous database schema. Double check the query logic, make sure the table names, attributes, and relations are correct and fix any errors and return the query in the same format. If it is already correct, return the query exactly as is here. If not, fix it and return the fixed query with the same format. Only return MySql syntax, and do not explain any errors!'
