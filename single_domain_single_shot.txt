@@ -1,0 +1,347 @@
+---------------------------------------------------------
+Strategy: single_domain_single_shot
+Who can I sell a weapon to within a Fighters Guild?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+Who can I sell a weapon to within a Fighters Guild?'SELECT m.MerchantName FROM merchant m INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName WHERE m.Faction = 'Fighters Guild' AND mt.ItemType = 'Weapon';' Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Who can I sell a weapon to within a Fighters Guild?
+---------
+Initial Response:
+```mysql
+SELECT m.MerchantName 
+FROM merchant m 
+INNER JOIN merchant_types mt 
+ON m.MerchantName = mt.MerchantName 
+WHERE m.Faction = 'Fighters Guild' 
+AND mt.ItemType = 'Weapon';
+```
+---------
+Fixed Response:
+
+SELECT m.MerchantName 
+FROM merchant m 
+INNER JOIN merchant_types mt 
+ON m.MerchantName = mt.MerchantName 
+WHERE m.Faction = 'Fighters Guild' 
+AND mt.ItemType = 'Weapon';
+
+---------
+Raw database response:
+[('Ergnir',), ('Wayn',), ('Hrundi',), ('Lorbumol gro-Aglakh',)]
+---------
+Friendly response:
+Based on the database response, you can sell a weapon to the following individuals within a Fighters Guild:
+
+1. Ergnir
+2. Wayn
+3. Hrundi
+4. Lorbumol gro-Aglakh
+---------
+---------------------------------------------------------
+Strategy: single_domain_single_shot
+Who is the NPC in the Telvanni faction with the highest rank number, and what is their rank name?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+Who can I sell a weapon to within a Fighters Guild?'SELECT m.MerchantName FROM merchant m INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName WHERE m.Faction = 'Fighters Guild' AND mt.ItemType = 'Weapon';' Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Who is the NPC in the Telvanni faction with the highest rank number, and what is their rank name?
+---------
+Initial Response:
+```mysql
+SELECT n.NpcName, f.RankName 
+FROM npc n 
+INNER JOIN faction f ON n.Faction = f.Faction AND n.RankNumber = f.RankNumber 
+WHERE n.Faction = 'Telvanni' 
+ORDER BY n.RankNumber DESC 
+LIMIT 1;
+```
+---------
+Fixed Response:
+
+SELECT n.NpcName, f.RankName 
+FROM npc n 
+INNER JOIN faction f ON n.Faction = f.Faction AND n.RankNumber = f.RankNumber 
+WHERE n.Faction = 'Telvanni' 
+ORDER BY n.RankNumber DESC 
+LIMIT 1;
+
+---------
+Raw database response:
+[('Gothren', 'Archmagister')]
+---------
+Friendly response:
+The NPC in the Telvanni faction with the highest rank number is Gothren, and their rank name is Archmagister.
+---------
+---------------------------------------------------------
+Strategy: single_domain_single_shot
+Who is the highest ranking merchant of any faction and where are they?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+Who can I sell a weapon to within a Fighters Guild?'SELECT m.MerchantName FROM merchant m INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName WHERE m.Faction = 'Fighters Guild' AND mt.ItemType = 'Weapon';' Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Who is the highest ranking merchant of any faction and where are they?
+---------
+Initial Response:
+```mysql
+SELECT m.MerchantName, m.Location
+FROM merchant m
+INNER JOIN (
+    SELECT Faction, MAX(RankNumber) AS MaxRank
+    FROM merchant
+    GROUP BY Faction
+) fm ON m.Faction = fm.Faction AND m.RankNumber = fm.MaxRank;
+```
+---------
+Fixed Response:
+
+SELECT m.MerchantName, m.Location
+FROM merchant m
+INNER JOIN (
+    SELECT Faction, MAX(RankNumber) AS MaxRank
+    FROM merchant
+    GROUP BY Faction
+) fm ON m.Faction = fm.Faction AND m.RankNumber = fm.MaxRank;
+
+---------
+Raw database response:
+[('Nibani Maesa', 'Urshilaku Camp, Wise Womans Yurt'), ('Sinnammu Mirpal', 'Ahemmusa Camp, Wise Womans Yurt'), ('Caius Cosades', 'Balmora, Caius Cosades House'), ('Anas Ulven', 'Gnaar Mok, Nadene Rotherans Shack'), ('Llevas Fels', 'Sadrith Mora, Nevrila Areloths House'), ('Meder Nulen', 'Sadrith Mora, Nevrila Areloths House'), ('Minasi Bavani', 'Sadrith Mora, Nevrila Areloths House'), ('Selvura Andrano', 'Gnaar Mok, Nadene Rotherans Shack'), ('Sodrara Andalas', 'Gnaar Mok, Nadene Rotherans Shack'), ('Gladroon', 'Ashmelech'), ('Mororurg', 'Ashmelech'), ('Germia', 'Galom Daeus, Entry'), ('Areas', 'Druscashti, Lower Level'), ('Hrundi', 'Sadrith Mora, Wolverine Hall: Fighters Guild'), ('Lorbumol gro-Aglakh', 'Vivec, Guild of Fighters'), ('Odral Helvi', 'Caldera, Governors Hall'), ('Lalatia Varian', 'Ebonheart, Imperial Chapels'), ('Ervona Barys', 'Ebonheart, Hawkmoth Legion Garrison'), ('Skink-in-Trees-Shade', 'Sadrith Mora, Wolverine Hall: Mages Guild'), ('Dunsalipal Dun-Ahhe', 'Sadrith Mora, Morag Tong Guild'), ('Ethasi Rilvayn', 'Balmora, Morag Tong Guild'), ('Goren Andarys', 'Ald-ruhn, Morag Tong Guildhall'), ('Abelle Chriditte', 'Valenvaryon, Propylon Chamber'), ('Adondasi Sadalvel', 'Vivec (3,-9)'), ('Agning', 'Ebonheart, Six Fishes'), ('Agrippina Herennia', 'Vivec, Agrippina Herennia: Clothier'), ('Alarvyne Indalas', 'Vivec, St. Delyn Glassworkers Hall'), ('Alusaron', 'Vivec, Alusaron: Weapon, Armor'), ('Arangaer', 'Sadrith Mora (17,4)'), ('Arrille', 'Seyda Neen, Arrilles Tradehouse'), ('Aryne Telnim', 'Tel Aruhn, Aryne Telnim: Weapon, Armor'), ('Ashuma-Nud Matluberib', 'Gnisis (-11,11)'), ('Ashumanu Eraishah', 'Suran, Suran Tradehouse'), ('Athanden Girith', 'Grazelands Region (10,15)'), ('Aurane Frernis', 'Vivec, Aurane Frernis: Apothecary'), ('Baissa', 'Vivec, Foreign Quarter Upper Waistworks'), ('Balen Vendu', 'Sadrith Mora, Balen Vendu: Monk'), ('Benunius Agrudilius', 'Balmora, Lucky Lockup'), ('Bervyn Lleryn', 'Vivec, St. Olms Waistworks'), ('Berwen', 'Tel Mora, Berwen: Trader'), ('Bevene Releth', 'Ald-ruhn, Bevene Releth: Clothier'), ('Bildren Areleth', 'Tel Aruhn, Bildren Areleth: Apothecary'), ('Bivale Teneran', 'Ald-ruhn, Bivale Teneran: Clothier'), ('Boderi Farano', 'Ald-ruhn, Ald Skar Inn'), ('Bolrin', 'Ebonheart, East Empire Company Hall'), ('Brathus Dals', 'Vivec, No Name Club'), ('Burcanius Varo', 'Vos, Varo Tradehouse'), ('Cienne Sintieve', 'Ald-ruhn, Cienne Sintieve: Alchemist'), ('Clagius Clanler', 'Balmora, Clagius Clanler: Outfitter'), ('Clibergus Urgelian', 'Sadrith Mora, Gateway Inn'), ('Codus Callonus', 'Ald-ruhn, Codus Callonus: Bookseller'), ('Creeper', 'Caldera, Ghorak Manor, 2nd Floor'), ('Dandera Selaro', 'Ald-ruhn (-2,6)'), ('Daras Aryon', 'Maar Gan (-3,12)'), ('Darvame Hleran', 'Seyda Neen (-2,-9)'), ('Daynes Redothril', 'Ald-ruhn, Daynes Redothril: Pawnbroker'), ('Dead Body', 'Koal Cave'), ('Dead Body2', 'Tel Uvirith, Tower Dungeon'), ('Dead Body3', 'Beran Ancestral Tomb'), ('Dolyn Rols', 'Vivec, St. Delyn Potters Hall'), ('Dorisa Darvel', 'Balmora, Dorisa Darvel: Bookseller'), ('Dralasa Nithryon', 'Balmora, Dralasa Nithryon: Pawnbroker'), ('Dranas Sarathram', 'Suran, Suran Slave Market'), ('Drarayne Girith', 'Tel Aruhn, Plot and Plaster'), ('Drelasa Ramothran', 'Pelagiad, Halfway Tavern'), ('Dulnea Ralaal', 'Balmora, Eight Plates'), ('Dunel Saryon', 'Molag Mar, The Pilgrims Rest'), ('Elegal', 'Sadrith Mora (17,4)'), ('Elegnan', 'Tel Mora, Elegnan: Clothier'), ('Elvas Savel', 'Molag Mar, Redoran Stronghold'), ('Erer Darothril', 'Sadrith Mora, Dirty Muriels Cornerclub'), ('Ery', 'Sadrith Mora, Gateway Inn'), ('Fadase Selvayn', 'Tel Branora, Fadase Selvayn: Trader'), ('Falanaamo', 'Caldera, Falanaamo: Clothier'), ('Fara', 'Sadrith Mora, Faras Hole in the Wall'), ('Felayn Andral', 'Holamayan Monastery'), ('Ferele Athram', 'Tel Aruhn, Ferele Athram: Trader'), ('Ferise Varo', 'Vos, Varo Tradehouse Entrance'), ('Folsi Thendas', 'Suran (6,-6)'), ('Fryfnhild', 'Dagon Fel, The End of the World'), ('Gadela Andus', 'Vivec, Elven Nations Cornerclub'), ('Galen Berer', 'Tel Branora, Galen Berer: Armorer'), ('Galtis Guvron', 'Ald-ruhn, The Rat In The Pot'), ('Garothmuk gro-Muzgub', 'Suran, Garothmuk gro-Muzgub: Weapon, Armor'), ('Gindas Ildram', 'Vivec, St. Olms Farmers and Laborers Hall'), ('Goldyn Belaram', 'Suran, Goldyn Belaram: Pawnbroker'), ('Gomeso Sarano', 'Vivec, St. Delyn Potters Hall'), ('Hakar the Candle', 'Molag Mar, Redoran Stronghold'), ('Hannabi Zabynatus', 'Gnisis (-11,11)'), ('Heifnir', 'Dagon Fel, Heifnir: Trader'), ('Helviane Desele', 'Suran, Deseles House of Earthly Delights'), ('Hetman Abelmawia', 'Gnisis, Abelmawia Hut'), ('Hjoldir', 'Dagon Fel (7,22)'), ('Hjotra the Peacock', 'Dagon Fel, End of the World Renter Rooms'), ('Hodlismod', 'Caldera, Hodlismod: Armorer'), ('Ibarnadad Assirnarari', 'Suran, Ibarnadad Assirnarari: Apothecary'), ('Idonea Munia', 'Vivec, Foreign Quarter Upper Waistworks'), ('Irgola', 'Caldera, Irgola: Pawnbroker'), ('Jeanne', 'Vivec, Jeanne: Trader'), ('Jobasha', 'Vivec, Jobashas Rare Books'), ('Jolda', 'Tel Mora, Jolda: Apothecary'), ('JRasha', 'Vivec, JRasha: Healer'), ('Leles Birian', 'Ascadian Isles Region (4,-8)'), ('Letreius Muco', 'Vivec, Foreign Quarter Canalworks'), ('Llether Vari', 'Ald-ruhn, Llether Vari: Enchanter'), ('Llorayna Sethan', 'Tel Branora, Sethans Tradehouse'), ('Lucretinaus Olcinius', 'Vivec, Lucretinaus Olcinius: Trader'), ('Mandur Omalen', 'Molag Mar, Redoran Stronghold'), ('Manse Andus', 'Maar Gan, Andus Tradehouse'), ('Maren Uvaren', 'Tel Aruhn, Maren Uvaren: Enchanter'), ('Marsus Tullius', 'Molag Amur Region (11,2)'), ('Mathis Dalobar', 'Rothan Ancestral Tomb'), ('Mebestian Ence', 'Pelagiad, Mebestien Ence: Trader'), ('Meldor', 'Balmora, Meldor: Armorer'), ('Mevel Fererus', 'Vivec, Mevel Fererus: Trader'), ('Mevil Molor', 'Vivec, Arena Fighters Training'), ('Mevure Hlen', 'Vivec, St. Olms Tailors and Dyers Hall'), ('Milie Hastien', 'Balmora, Milie Hastien: Fine Clothier'), ('Miun-Gei', 'Vivec, Miun-Gei: Enchanter'), ('Moroni Uvelas', 'Vivec, St. Olms Brewers and Fishmongers Hall'), ('Mossanon', 'Sadrith Mora, Volmyni Drals House'), ('Mudcrab', 'Azuras Coast, just SouthEast of Mzahnch Ruins, East of Vivec, SouthEast from Suran'), ('Nalcarya of White Haven', 'Balmora, Nalcarya of White Haven: Fine Alchemist'), ('Nalion', 'Sadrith Mora, Gateway Inn'), ('Nalis Gals', 'Vivec, St. Olms Waistworks'), ('Nalvilie Saren', 'Vivec, St. Olms Canal South-One'), ('Navam Veran', 'Ald-ruhn (-3,6)'), ('Nels Llendo', 'Ascadian Isles Region (0,-9)'), ('Nivos Drivam', 'Vivec, St. Olms Tanners and Miners Hall'), ('Only-He-Stands-There', 'Balmora, South Wall Cornerclub'), ('Orns Omaren', 'Molag Mar, St. Veloths Hostel'), ('Paur Maston', 'Ascadian Isles Region (5,-8)'), ('Peregrina Cnisia', ' '), ('Perien Aurelie', 'Hla Oad, Fatlegs Drop Off'), ('Punibi Yahaz', 'Gnisis (-11,10)'), ('Radras', 'Tel Mora, Radras: Weapon, Armor'), ('Ralds Oril', 'Suran, Ralds Oril: Trader'), ('Ranosa Gilvayn', 'Suran, Ranosa Gilvayn: Outfitter'), ('Raril Giral', 'Vivec, Black Shalk Cornerclub'), ('Rasha', 'West Gash Region (-6,5)'), ('Rathal Barus', 'Vivec, St. Delyn Glassworkers Hall'), ('RaVirr', 'Balmora, RaVirr: Trader'), ('Raviso Andalas', 'Molag Mar, Redoran Stronghold'), ('Rolasa Oren', 'Vivec, Foreign Quarter Upper Waistworks'), ('Saetring', 'Molag Mar, Saetring the Nord: Weapon, Armor'), ('Saras Orelu', 'Molag Mar, Temple'), ('Savile Imayn', 'Tel Aruhn (15,5)'), ('Seldus Nerendus', 'Khuul (-9,16)'), ('Selkirnemus', 'Molag Mar, The Pilgrims Rest'), ('Selvil Sareloth', 'Balmora (-3,-3)'), ('Senyndie', 'Vivec, Arena Fighters Quarters'), ('Sevyni Saryon', 'Vivec, Foreign Quarter Lower Waistworks'), ('Shazgob gra-Luzgan', 'Ebonheart, East Empire Company Hall'), ('Shenk', 'Caldera, Shenks Shovel'), ('Ship Captain', 'Prelude Shipwreck, Lower Level'), ('Shulki Ashunbabi', 'Gnisis (-11,11)'), ('Simine Fralinie', 'Vivec, Simine Fralinie: Bookseller'), ('Sinyaramen', 'Sadrith Mora, Gateway Inn'), ('Sorosi Radobar', 'Vivec, The Flowers of Gold'), ('Stentus Tullius', 'Tel Aruhn (15,5)'), ('Taren Omothan', 'Holamayan Monastery'), ('Tarhiel', 'Bitter Coast Region (-3,-8)'), ('Teris Raledran', 'Ascadian Isles Region (3,-7)'), ('Tervur Braven', 'Vivec, Tervur Braven: Trader'), ('Thaeril', 'Tel Mora, The Covenant'), ('Thongar', 'Khuul, Thongars Tradehouse'), ('Thorek', 'Balmora, The Razor Hole'), ('Tinos Drothan', 'Ascadian Isles Region (5,-9)'), ('Tiras Sadus', 'Ald-ruhn, Tiras Sadus: General Merchandise'), ('Tivam Sadri', 'Holamayan Monastery'), ('Tolvone Sarendas', 'Sadrith Mora, Faras Hole in the Wall'), ('Trasteve', 'Hla Oad, Fatlegs Drop Off'), ('Uulernil', 'Pelagiad, Uulernil : Armorer'), ('Vanjirra', 'Molag Mar (13,-8)'), ('Vasesius Viciulus', 'Molag Mar, Vasesius Viciulus: Trader'), ('Vaval Selas', 'Vivec, St. Olms Temple'), ('Verara Rendo', 'Suran, Verara Rendo: Clothier'), ('Verick Gemain', 'Caldera, Verick Gemain: Trader'), ('Vilamon', 'Ebonheart (1,-13)'), ('Zabarbael', 'Molag Mar (13,-8)'), ('Zebba Benamamat', 'Gnisis (-11,11)'), ('Fonas Retheran', 'Ghostgate, Tower of Dusk'), ('Lliros Tures', 'Indarys Manor, Manor Services'), ('Mavis Nadram', 'Indarys Manor'), ('Uvele Berendas', 'Indarys Manor, Berendas House'), ('Hlendrisa Seleth', 'Tel Uvirith, Seleths House'), ('Llunela Hleran', 'Sadrith Mora, Telvanni Council House, Hermitage'), ('Tunila Omavel', 'Tel Uvirith, Omavels House'), ('Endryn Llethan', 'Vivec, High Fane'), ('Feldrelo Sadri', 'Balmora, Temple'), ('Tharer Rotheloth', 'Molag Mar, Temple'), ('Tuls Valen', 'Ald-ruhn, Temple'), ('Uvoo Llaren', 'Ghostgate, Temple'), ('Big Helende', 'Sadrith Mora, Dirty Muriels Cornerclub'), ('Sugar-Lips Habasi', 'Balmora, South Wall Cornerclub')]
+---------
+Friendly response:
+The highest-ranking merchant of any faction is not directly specified in the database response. However, the response includes a variety of merchants and their locations. To determine the highest-ranking merchant, additional context or information about what criteria define "highest-ranking" (e.g., wealth, influence, affiliation) would be needed. From the given list, without more specific criteria, it's not possible to identify one as the highest-ranking merchant.
+---------
+---------------------------------------------------------
+Strategy: single_domain_single_shot
+Which NPC has the longest name, and what class are they?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+Who can I sell a weapon to within a Fighters Guild?'SELECT m.MerchantName FROM merchant m INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName WHERE m.Faction = 'Fighters Guild' AND mt.ItemType = 'Weapon';' Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Which NPC has the longest name, and what class are they?
+---------
+Initial Response:
+```mysql
+SELECT NpcName, Class FROM npc ORDER BY CHAR_LENGTH(NpcName) DESC LIMIT 1;
+```
+---------
+Fixed Response:
+
+SELECT NpcName, Class FROM npc ORDER BY CHAR_LENGTH(NpcName) DESC LIMIT 1;
+
+---------
+Raw database response:
+[('Morning-Star-Steals-Away-Clouds', 'Slave')]
+---------
+Friendly response:
+The NPC with the longest name is "Morning-Star-Steals-Away-Clouds," and they belong to the class "Slave."
+---------
+---------------------------------------------------------
+Strategy: single_domain_single_shot
+Which merchant has the most gold, and what do they sell?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+Who can I sell a weapon to within a Fighters Guild?'SELECT m.MerchantName FROM merchant m INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName WHERE m.Faction = 'Fighters Guild' AND mt.ItemType = 'Weapon';' Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Which merchant has the most gold, and what do they sell?
+---------
+Initial Response:
+```mysql
+SELECT m.MerchantName, m.AvailableGold, mt.ItemType 
+FROM merchant m 
+INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName 
+ORDER BY m.AvailableGold DESC 
+LIMIT 1;
+```
+---------
+Fixed Response:
+
+SELECT m.MerchantName, m.AvailableGold, mt.ItemType 
+FROM merchant m 
+INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName 
+ORDER BY m.AvailableGold DESC 
+LIMIT 1;
+
+---------
+Raw database response:
+[('Mudcrab', 10000, 'Weapon')]
+---------
+Friendly response:
+The merchant with the most gold is the Mudcrab, and they sell weapons.
+---------
+---------------------------------------------------------
+Strategy: single_domain_single_shot
+What is the rank name of the highest ranking NPC within the faction containing the least number of npcs? Who are they? What is their faction?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+Who can I sell a weapon to within a Fighters Guild?'SELECT m.MerchantName FROM merchant m INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName WHERE m.Faction = 'Fighters Guild' AND mt.ItemType = 'Weapon';' Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: What is the rank name of the highest ranking NPC within the faction containing the least number of npcs? Who are they? What is their faction?
+---------
+Initial Response:
+```mysql
+SELECT f.RankName, n.NpcName, n.Faction
+FROM npc n
+JOIN faction f ON n.Faction = f.Faction AND n.RankNumber = f.RankNumber
+WHERE n.Faction = (
+    SELECT n.Faction
+    FROM npc n
+    GROUP BY n.Faction
+    ORDER BY COUNT(*) ASC
+    LIMIT 1
+)
+ORDER BY n.RankNumber DESC
+LIMIT 1;
+```
+---------
+Fixed Response:
+
+SELECT f.RankName, n.NpcName, n.Faction
+FROM npc n
+JOIN faction f ON n.Faction = f.Faction AND n.RankNumber = f.RankNumber
+WHERE n.Faction = (
+    SELECT n.Faction
+    FROM npc n
+    GROUP BY n.Faction
+    ORDER BY COUNT(*) ASC
+    LIMIT 1
+)
+ORDER BY n.RankNumber DESC
+LIMIT 1;
+
+---------
+Raw database response:
+[(None, 'Oritius Maro', 'Talos Cult')]
+---------
+Friendly response:
+The highest-ranking NPC within the faction containing the least number of NPCs is Oritius Maro. They belong to the Talos Cult faction. The rank name is not provided in the response.
+---------
+---------------------------------------------------------
+Strategy: single_domain_single_shot
+Who are the merchants with the highest rank number, and what do they sell? What are their factions?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+Who can I sell a weapon to within a Fighters Guild?'SELECT m.MerchantName FROM merchant m INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName WHERE m.Faction = 'Fighters Guild' AND mt.ItemType = 'Weapon';' Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Who are the merchants with the highest rank number, and what do they sell? What are their factions?
+---------
+Initial Response:
+```mysql
+SELECT m.MerchantName, MAX(m.RankNumber) AS HighestRankNumber, mt.ItemType, m.Faction
+FROM merchant m
+INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName
+GROUP BY m.MerchantName, mt.ItemType, m.Faction
+ORDER BY HighestRankNumber DESC;
+```
+---------
+Fixed Response:
+
+SELECT m.MerchantName, m.RankNumber AS HighestRankNumber, mt.ItemType, m.Faction
+FROM merchant m
+INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName
+WHERE m.RankNumber = (SELECT MAX(RankNumber) FROM merchant)
+ORDER BY m.RankNumber DESC;
+
+---------
+Raw database response:
+[('Caius Cosades', 9, 'Monk Service', 'Blades')]
+---------
+Friendly response:
+The merchant with the highest rank number is Caius Cosades. He sells Monk Service and is part of the Blades faction.
+---------
+---------------------------------------------------------
+Strategy: single_domain_single_shot
+Who is the highest ranked merchant that offers priest services? What is their rank and faction?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+Who can I sell a weapon to within a Fighters Guild?'SELECT m.MerchantName FROM merchant m INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName WHERE m.Faction = 'Fighters Guild' AND mt.ItemType = 'Weapon';' Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Who is the highest ranked merchant that offers priest services? What is their rank and faction?
+---------
+Initial Response:
+```mysql
+SELECT m.MerchantName, m.RankNumber, m.Faction 
+FROM merchant m 
+INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName 
+WHERE mt.ItemType = 'Priest Service' 
+ORDER BY m.RankNumber DESC 
+LIMIT 1;
+```
+---------
+Fixed Response:
+
+SELECT m.MerchantName, m.RankNumber, m.Faction 
+FROM merchant m 
+INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName 
+WHERE mt.ItemType = 'Priest Service' 
+ORDER BY m.RankNumber DESC 
+LIMIT 1;
+
+---------
+Raw database response:
+[('Methal Seran', 7, 'Temple')]
+---------
+Friendly response:
+The highest ranked merchant that offers priest services is Methal Seran. Their rank is 7, and they belong to the Temple faction.
+---------
+---------------------------------------------------------
+Strategy: single_domain_single_shot
+Of the merchants that are also NPCs, which class is most common?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+Who can I sell a weapon to within a Fighters Guild?'SELECT m.MerchantName FROM merchant m INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName WHERE m.Faction = 'Fighters Guild' AND mt.ItemType = 'Weapon';' Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Of the merchants that are also NPCs, which class is most common?
+---------
+Initial Response:
+```mysql
+SELECT n.Class, COUNT(*) as Count
+FROM npc n
+INNER JOIN merchant m ON n.NpcName = m.MerchantName
+GROUP BY n.Class
+ORDER BY Count DESC
+LIMIT 1;
+```
+---------
+Fixed Response:
+
+SELECT n.Class, COUNT(*) as Count
+FROM npc n
+INNER JOIN merchant m ON n.ID = m.MerchantName
+GROUP BY n.Class
+ORDER BY Count DESC
+LIMIT 1;
+
+---------
+Raw database response:
+[('Trader Service', 57)]
+---------
+Friendly response:
+The most common class among the merchants that are also NPCs is "Trader Service," with 57 instances.
+---------

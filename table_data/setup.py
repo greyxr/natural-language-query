@@ -13,7 +13,7 @@ TABLES['faction'] = (
 TABLES['npc'] = (
     "CREATE TABLE npc ("
     "ID VARCHAR(30) PRIMARY KEY,"
-    "NpcName VARCHAR(30) NOT NULL,"
+    "NpcName VARCHAR(60) NOT NULL,"
     "NpcLevel INT UNSIGNED NOT NULL,"
     "Faction VARCHAR(30),"
     "RankNumber TINYINT UNSIGNED NOT NULL,"

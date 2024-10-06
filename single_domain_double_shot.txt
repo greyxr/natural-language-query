@@ -1,0 +1,320 @@
+---------------------------------------------------------
+Strategy: single_domain_double_shot
+Who can I sell a weapon to within a Fighters Guild?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+Who can I sell a weapon to within a Fighters Guild?'SELECT m.MerchantName FROM merchant m INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName WHERE m.Faction = 'Fighters Guild' AND mt.ItemType = 'Weapon';'Who is the NPC in the Telvanni faction with the highest rank number, and what is their rank name?'SELECT n.NpcName, f.RankName FROM npc n JOIN faction f ON n.Faction = f.Faction AND n.RankNumber = f.RankNumber WHERE n.Faction = 'Telvanni' ORDER BY n.RankNumber DESC LIMIT 1;' Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Who can I sell a weapon to within a Fighters Guild?
+---------
+Initial Response:
+```mysql
+SELECT m.MerchantName FROM merchant m INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName WHERE m.Faction = 'Fighters Guild' AND mt.ItemType = 'Weapon';
+```
+---------
+Fixed Response:
+
+SELECT m.MerchantName FROM merchant m INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName WHERE m.Faction = 'Fighters Guild' AND mt.ItemType = 'Weapon';
+
+---------
+Raw database response:
+[('Ergnir',), ('Wayn',), ('Hrundi',), ('Lorbumol gro-Aglakh',)]
+---------
+Friendly response:
+Based on the response from the database, you can sell a weapon within a Fighters Guild to the following individuals: Ergnir, Wayn, Hrundi, and Lorbumol gro-Aglakh.
+---------
+---------------------------------------------------------
+Strategy: single_domain_double_shot
+Who is the NPC in the Telvanni faction with the highest rank number, and what is their rank name?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+Who can I sell a weapon to within a Fighters Guild?'SELECT m.MerchantName FROM merchant m INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName WHERE m.Faction = 'Fighters Guild' AND mt.ItemType = 'Weapon';'Who is the NPC in the Telvanni faction with the highest rank number, and what is their rank name?'SELECT n.NpcName, f.RankName FROM npc n JOIN faction f ON n.Faction = f.Faction AND n.RankNumber = f.RankNumber WHERE n.Faction = 'Telvanni' ORDER BY n.RankNumber DESC LIMIT 1;' Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Who is the NPC in the Telvanni faction with the highest rank number, and what is their rank name?
+---------
+Initial Response:
+```sql
+SELECT n.NpcName, f.RankName FROM npc n JOIN faction f ON n.Faction = f.Faction AND n.RankNumber = f.RankNumber WHERE n.Faction = 'Telvanni' ORDER BY n.RankNumber DESC LIMIT 1;
+```
+---------
+Fixed Response:
+
+SELECT n.NpcName, f.RankName FROM npc n JOIN faction f ON n.Faction = f.Faction AND n.RankNumber = f.RankNumber WHERE n.Faction = 'Telvanni' ORDER BY n.RankNumber DESC LIMIT 1;
+
+---------
+Raw database response:
+[('Gothren', 'Archmagister')]
+---------
+Friendly response:
+The NPC in the Telvanni faction with the highest rank number is Gothren, and their rank name is Archmagister.
+---------
+---------------------------------------------------------
+Strategy: single_domain_double_shot
+Who is the highest ranking merchant of any faction and where are they?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+Who can I sell a weapon to within a Fighters Guild?'SELECT m.MerchantName FROM merchant m INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName WHERE m.Faction = 'Fighters Guild' AND mt.ItemType = 'Weapon';'Who is the NPC in the Telvanni faction with the highest rank number, and what is their rank name?'SELECT n.NpcName, f.RankName FROM npc n JOIN faction f ON n.Faction = f.Faction AND n.RankNumber = f.RankNumber WHERE n.Faction = 'Telvanni' ORDER BY n.RankNumber DESC LIMIT 1;' Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Who is the highest ranking merchant of any faction and where are they?
+---------
+Initial Response:
+```mysql
+SELECT m.MerchantName, m.Location FROM merchant m JOIN faction f ON m.Faction = f.Faction AND m.RankNumber = f.RankNumber ORDER BY m.RankNumber DESC LIMIT 1;
+```
+---------
+Fixed Response:
+
+SELECT m.MerchantName, m.Location FROM merchant m ORDER BY m.RankNumber DESC LIMIT 1;
+
+---------
+Raw database response:
+[('Caius Cosades', 'Balmora, Caius Cosades House')]
+---------
+Friendly response:
+The highest ranking merchant of any faction is Caius Cosades, who is located in Balmora, at Caius Cosades' House.
+---------
+---------------------------------------------------------
+Strategy: single_domain_double_shot
+Which NPC has the longest name, and what class are they?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+Who can I sell a weapon to within a Fighters Guild?'SELECT m.MerchantName FROM merchant m INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName WHERE m.Faction = 'Fighters Guild' AND mt.ItemType = 'Weapon';'Who is the NPC in the Telvanni faction with the highest rank number, and what is their rank name?'SELECT n.NpcName, f.RankName FROM npc n JOIN faction f ON n.Faction = f.Faction AND n.RankNumber = f.RankNumber WHERE n.Faction = 'Telvanni' ORDER BY n.RankNumber DESC LIMIT 1;' Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Which NPC has the longest name, and what class are they?
+---------
+Initial Response:
+```mysql
+SELECT NpcName, Class FROM npc ORDER BY CHAR_LENGTH(NpcName) DESC LIMIT 1;
+```
+---------
+Fixed Response:
+
+SELECT NpcName, Class FROM npc ORDER BY CHAR_LENGTH(NpcName) DESC LIMIT 1;
+
+---------
+Raw database response:
+[('Morning-Star-Steals-Away-Clouds', 'Slave')]
+---------
+Friendly response:
+The NPC with the longest name is "Morning-Star-Steals-Away-Clouds," and their class is "Slave."
+---------
+---------------------------------------------------------
+Strategy: single_domain_double_shot
+Which merchant has the most gold, and what do they sell?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+Who can I sell a weapon to within a Fighters Guild?'SELECT m.MerchantName FROM merchant m INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName WHERE m.Faction = 'Fighters Guild' AND mt.ItemType = 'Weapon';'Who is the NPC in the Telvanni faction with the highest rank number, and what is their rank name?'SELECT n.NpcName, f.RankName FROM npc n JOIN faction f ON n.Faction = f.Faction AND n.RankNumber = f.RankNumber WHERE n.Faction = 'Telvanni' ORDER BY n.RankNumber DESC LIMIT 1;' Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Which merchant has the most gold, and what do they sell?
+---------
+Initial Response:
+```mysql
+SELECT m.MerchantName, mt.ItemType 
+FROM merchant m 
+JOIN merchant_types mt ON m.MerchantName = mt.MerchantName 
+ORDER BY m.AvailableGold DESC 
+LIMIT 1;
+```
+---------
+Fixed Response:
+
+SELECT m.MerchantName, mt.ItemType 
+FROM merchant m 
+JOIN merchant_types mt ON m.MerchantName = mt.MerchantName 
+ORDER BY m.AvailableGold DESC 
+LIMIT 1;
+
+---------
+Raw database response:
+[('Mudcrab', 'Weapon')]
+---------
+Friendly response:
+The merchant with the most gold is the Mudcrab, and they sell weapons.
+---------
+---------------------------------------------------------
+Strategy: single_domain_double_shot
+What is the rank name of the highest ranking NPC within the faction containing the least number of npcs? Who are they? What is their faction?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+Who can I sell a weapon to within a Fighters Guild?'SELECT m.MerchantName FROM merchant m INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName WHERE m.Faction = 'Fighters Guild' AND mt.ItemType = 'Weapon';'Who is the NPC in the Telvanni faction with the highest rank number, and what is their rank name?'SELECT n.NpcName, f.RankName FROM npc n JOIN faction f ON n.Faction = f.Faction AND n.RankNumber = f.RankNumber WHERE n.Faction = 'Telvanni' ORDER BY n.RankNumber DESC LIMIT 1;' Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: What is the rank name of the highest ranking NPC within the faction containing the least number of npcs? Who are they? What is their faction?
+---------
+Initial Response:
+```mysql
+SELECT n.NpcName, f.RankName, n.Faction 
+FROM npc n 
+JOIN (SELECT Faction, COUNT(*) AS npc_count 
+      FROM npc 
+      GROUP BY Faction 
+      ORDER BY npc_count ASC 
+      LIMIT 1) fc ON n.Faction = fc.Faction 
+JOIN faction f ON n.Faction = f.Faction AND n.RankNumber = f.RankNumber 
+ORDER BY n.RankNumber DESC 
+LIMIT 1;
+```
+---------
+Fixed Response:
+
+SELECT n.NpcName, f.RankName, n.Faction 
+FROM npc n 
+JOIN (SELECT Faction, COUNT(*) AS npc_count 
+      FROM npc 
+      GROUP BY Faction 
+      ORDER BY npc_count ASC 
+      LIMIT 1) fc ON n.Faction = fc.Faction 
+JOIN faction f ON n.Faction = f.Faction AND n.RankNumber = f.RankNumber 
+ORDER BY n.RankNumber DESC 
+LIMIT 1;
+
+---------
+Raw database response:
+[('Oritius Maro', None, 'Talos Cult')]
+---------
+Friendly response:
+The rank name of the highest-ranking NPC within the faction containing the least number of NPCs is not specified in the response. However, the highest-ranking NPC is Oritius Maro, who is a member of the 'Talos Cult' faction.
+---------
+---------------------------------------------------------
+Strategy: single_domain_double_shot
+Who are the merchants with the highest rank number, and what do they sell? What are their factions?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+Who can I sell a weapon to within a Fighters Guild?'SELECT m.MerchantName FROM merchant m INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName WHERE m.Faction = 'Fighters Guild' AND mt.ItemType = 'Weapon';'Who is the NPC in the Telvanni faction with the highest rank number, and what is their rank name?'SELECT n.NpcName, f.RankName FROM npc n JOIN faction f ON n.Faction = f.Faction AND n.RankNumber = f.RankNumber WHERE n.Faction = 'Telvanni' ORDER BY n.RankNumber DESC LIMIT 1;' Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Who are the merchants with the highest rank number, and what do they sell? What are their factions?
+---------
+Initial Response:
+```mysql
+SELECT m.MerchantName, m.Faction, mt.ItemType 
+FROM merchant m 
+JOIN merchant_types mt ON m.MerchantName = mt.MerchantName 
+WHERE (m.Faction, m.RankNumber) IN (
+    SELECT Faction, MAX(RankNumber) 
+    FROM merchant 
+    GROUP BY Faction
+);
+```
+---------
+Fixed Response:
+
+SELECT m.MerchantName, m.Faction, mt.ItemType 
+FROM merchant m 
+JOIN merchant_types mt ON m.MerchantName = mt.MerchantName 
+WHERE (m.Faction, m.RankNumber) IN (
+    SELECT Faction, MAX(RankNumber) 
+    FROM merchant 
+    GROUP BY Faction
+);
+
+---------
+Raw database response:
+[('Nibani Maesa', 'Ashlanders', 'Wise Woman Service'), ('Sinnammu Mirpal', 'Ashlanders', 'Wise Woman Service'), ('Caius Cosades', 'Blades', 'Monk Service'), ('Anas Ulven', 'Camonna Tong', 'Thief Service'), ('Llevas Fels', 'Camonna Tong', 'Savant Service'), ('Meder Nulen', 'Camonna Tong', 'Alchemy'), ('Meder Nulen', 'Camonna Tong', 'Ingredient'), ('Meder Nulen', 'Camonna Tong', 'Apparatus'), ('Meder Nulen', 'Camonna Tong', 'Weapon'), ('Meder Nulen', 'Camonna Tong', 'Armor'), ('Meder Nulen', 'Camonna Tong', 'Clothing'), ('Meder Nulen', 'Camonna Tong', 'Book'), ('Meder Nulen', 'Camonna Tong', 'Misc'), ('Minasi Bavani', 'Camonna Tong', 'Thief Service'), ('Selvura Andrano', 'Camonna Tong', 'Alchemy'), ('Selvura Andrano', 'Camonna Tong', 'Ingredient'), ('Selvura Andrano', 'Camonna Tong', 'Apparatus'), ('Selvura Andrano', 'Camonna Tong', 'Weapon'), ('Selvura Andrano', 'Camonna Tong', 'Armor'), ('Selvura Andrano', 'Camonna Tong', 'Clothing'), ('Selvura Andrano', 'Camonna Tong', 'Book'), ('Selvura Andrano', 'Camonna Tong', 'Misc'), ('Sodrara Andalas', 'Camonna Tong', 'Savant Service'), ('Gladroon', 'Clan Aundae', 'Weapon'), ('Gladroon', 'Clan Aundae', 'Armor'), ('Mororurg', 'Clan Aundae', 'Alchemy'), ('Mororurg', 'Clan Aundae', 'Ingredient'), ('Mororurg', 'Clan Aundae', 'Apparatus'), ('Germia', 'Clan Berne', 'Misc'), ('Areas', 'Clan Quarra', 'Misc'), ('Hrundi', 'Fighters Guild', 'Weapon'), ('Hrundi', 'Fighters Guild', 'Armor'), ('Lorbumol gro-Aglakh', 'Fighters Guild', 'Weapon'), ('Lorbumol gro-Aglakh', 'Fighters Guild', 'Armor'), ('Odral Helvi', 'Hlaalu', 'Monk Service'), ('Lalatia Varian', 'Imperial Cult', 'Priest Service'), ('Ervona Barys', 'Imperial Legion', 'Battlemage Service'), ('Skink-in-Trees-Shade', 'Mages Guild', 'Sorcerer Service'), ('Dunsalipal Dun-Ahhe', 'Morag Tong', 'Assassin Service'), ('Ethasi Rilvayn', 'Morag Tong', 'Nightblade Service'), ('Goren Andarys', 'Morag Tong', 'Monk Service'), ('Abelle Chriditte', 'None', 'Alchemy'), ('Abelle Chriditte', 'None', 'Ingredient'), ('Abelle Chriditte', 'None', 'Apparatus'), ('Adondasi Sadalvel', 'None', 'Caravaner'), ('Agning', 'None', 'Misc'), ('Agning', 'None', 'Food'), ('Agning', 'None', 'Drink'), ('Agrippina Herennia', 'None', 'Clothing'), ('Alarvyne Indalas', 'None', 'Clothing'), ('Alarvyne Indalas', 'None', 'Book'), ('Alarvyne Indalas', 'None', 'Misc'), ('Alusaron', 'None', 'Weapon'), ('Alusaron', 'None', 'Armor'), ('Arangaer', 'None', 'Alchemy'), ('Arangaer', 'None', 'Ingredient'), ('Arangaer', 'None', 'Apparatus'), ('Arrille', 'None', 'Clothing'), ('Arrille', 'None', 'Book'), ('Arrille', 'None', 'Misc'), ('Aryne Telnim', 'None', 'Weapon'), ('Aryne Telnim', 'None', 'Armor'), ('Ashuma-Nud Matluberib', 'None', 'Weapon'), ('Ashuma-Nud Matluberib', 'None', 'Armor'), ('Ashumanu Eraishah', 'None', 'Clothing'), ('Ashumanu Eraishah', 'None', 'Book'), ('Ashumanu Eraishah', 'None', 'Misc'), ('Athanden Girith', 'None', 'Alchemy'), ('Athanden Girith', 'None', 'Ingredient'), ('Athanden Girith', 'None', 'Apparatus'), ('Athanden Girith', 'None', 'Weapon'), ('Athanden Girith', 'None', 'Armor'), ('Athanden Girith', 'None', 'Clothing'), ('Athanden Girith', 'None', 'Book'), ('Athanden Girith', 'None', 'Misc'), ('Aurane Frernis', 'None', 'Alchemy'), ('Aurane Frernis', 'None', 'Ingredient'), ('Aurane Frernis', 'None', 'Apparatus'), ('Baissa', 'None', 'Clothing'), ('Baissa', 'None', 'Book'), ('Baissa', 'None', 'Misc'), ('Balen Vendu', 'None', 'Monk Service'), ('Benunius Agrudilius', 'None', 'Misc'), ('Benunius Agrudilius', 'None', 'Food'), ('Benunius Agrudilius', 'None', 'Drink'), ('Bervyn Lleryn', 'None', 'Clothing'), ('Bervyn Lleryn', 'None', 'Book'), ('Bervyn Lleryn', 'None', 'Misc'), ('Berwen', 'None', 'Clothing'), ('Berwen', 'None', 'Book'), ('Berwen', 'None', 'Misc'), ('Bevene Releth', 'None', 'Clothing'), ('Bildren Areleth', 'None', 'Alchemy'), ('Bildren Areleth', 'None', 'Ingredient'), ('Bildren Areleth', 'None', 'Apparatus'), ('Bivale Teneran', 'None', 'Clothing'), ('Boderi Farano', 'None', 'Misc'), ('Boderi Farano', 'None', 'Food'), ('Boderi Farano', 'None', 'Drink'), ('Bolrin', 'None', 'Alchemy'), ('Bolrin', 'None', 'Ingredient'), ('Bolrin', 'None', 'Apparatus'), ('Bolrin', 'None', 'Weapon'), ('Bolrin', 'None', 'Armor'), ('Bolrin', 'None', 'Clothing'), ('Bolrin', 'None', 'Book'), ('Bolrin', 'None', 'Misc'), ('Brathus Dals', 'None', 'Clothing'), ('Brathus Dals', 'None', 'Book'), ('Brathus Dals', 'None', 'Misc'), ('Burcanius Varo', 'None', 'Misc'), ('Burcanius Varo', 'None', 'Food'), ('Burcanius Varo', 'None', 'Drink'), ('Cienne Sintieve', 'None', 'Alchemy'), ('Cienne Sintieve', 'None', 'Ingredient'), ('Cienne Sintieve', 'None', 'Apparatus'), ('Clagius Clanler', 'None', 'Clothing'), ('Clagius Clanler', 'None', 'Book'), ('Clagius Clanler', 'None', 'Misc'), ('Clibergus Urgelian', 'None', 'Alchemy'), ('Clibergus Urgelian', 'None', 'Ingredient'), ('Clibergus Urgelian', 'None', 'Apparatus'), ('Clibergus Urgelian', 'None', 'Weapon'), ('Clibergus Urgelian', 'None', 'Armor'), ('Clibergus Urgelian', 'None', 'Clothing'), ('Clibergus Urgelian', 'None', 'Book'), ('Clibergus Urgelian', 'None', 'Misc'), ('Codus Callonus', 'None', 'Book'), ('Creeper', 'None', 'Alchemy'), ('Creeper', 'None', 'Ingredient'), ('Creeper', 'None', 'Apparatus'), ('Creeper', 'None', 'Weapon'), ('Creeper', 'None', 'Armor'), ('Creeper', 'None', 'Clothing'), ('Creeper', 'None', 'Book'), ('Creeper', 'None', 'Misc'), ('Dandera Selaro', 'None', 'Weapon'), ('Dandera Selaro', 'None', 'Armor'), ('Daras Aryon', 'None', 'Caravaner'), ('Darvame Hleran', 'None', 'Caravaner'), ('Daynes Redothril', 'None', 'Alchemy'), ('Daynes Redothril', 'None', 'Ingredient'), ('Daynes Redothril', 'None', 'Apparatus'), ('Daynes Redothril', 'None', 'Weapon'), ('Daynes Redothril', 'None', 'Armor'), ('Daynes Redothril', 'None', 'Clothing'), ('Daynes Redothril', 'None', 'Book'), ('Daynes Redothril', 'None', 'Misc'), ('Dead Body', 'None', 'Alchemy'), ('Dead Body', 'None', 'Ingredient'), ('Dead Body', 'None', 'Apparatus'), ('Dead Body', 'None', 'Weapon'), ('Dead Body', 'None', 'Armor'), ('Dead Body', 'None', 'Clothing'), ('Dead Body', 'None', 'Book'), ('Dead Body', 'None', 'Misc'), ('Dead Body2', 'None', 'Alchemy'), ('Dead Body2', 'None', 'Ingredient'), ('Dead Body2', 'None', 'Apparatus'), ('Dead Body2', 'None', 'Weapon'), ('Dead Body2', 'None', 'Armor'), ('Dead Body2', 'None', 'Clothing'), ('Dead Body2', 'None', 'Book'), ('Dead Body2', 'None', 'Misc'), ('Dead Body3', 'None', 'Alchemy'), ('Dead Body3', 'None', 'Ingredient'), ('Dead Body3', 'None', 'Apparatus'), ('Dead Body3', 'None', 'Weapon'), ('Dead Body3', 'None', 'Armor'), ('Dead Body3', 'None', 'Clothing'), ('Dead Body3', 'None', 'Book'), ('Dead Body3', 'None', 'Misc'), ('Dolyn Rols', 'None', 'Clothing'), ('Dolyn Rols', 'None', 'Book'), ('Dolyn Rols', 'None', 'Misc'), ('Dorisa Darvel', 'None', 'Book'), ('Dralasa Nithryon', 'None', 'Alchemy'), ('Dralasa Nithryon', 'None', 'Ingredient'), ('Dralasa Nithryon', 'None', 'Apparatus'), ('Dralasa Nithryon', 'None', 'Weapon'), ('Dralasa Nithryon', 'None', 'Armor'), ('Dralasa Nithryon', 'None', 'Clothing'), ('Dralasa Nithryon', 'None', 'Book'), ('Dralasa Nithryon', 'None', 'Misc'), ('Dranas Sarathram', 'None', 'Alchemy'), ('Dranas Sarathram', 'None', 'Ingredient'), ('Dranas Sarathram', 'None', 'Apparatus'), ('Dranas Sarathram', 'None', 'Weapon'), ('Dranas Sarathram', 'None', 'Armor'), ('Dranas Sarathram', 'None', 'Clothing'), ('Dranas Sarathram', 'None', 'Book'), ('Dranas Sarathram', 'None', 'Misc'), ('Drarayne Girith', 'None', 'Misc'), ('Drarayne Girith', 'None', 'Food'), ('Drarayne Girith', 'None', 'Drink'), ('Drelasa Ramothran', 'None', 'Misc'), ('Drelasa Ramothran', 'None', 'Food'), ('Drelasa Ramothran', 'None', 'Drink'), ('Dulnea Ralaal', 'None', 'Misc'), ('Dulnea Ralaal', 'None', 'Food'), ('Dulnea Ralaal', 'None', 'Drink'), ('Dunel Saryon', 'None', 'Clothing'), ('Dunel Saryon', 'None', 'Book'), ('Dunel Saryon', 'None', 'Misc'), ('Elegal', 'None', 'Clothing'), ('Elegal', 'None', 'Book'), ('Elegal', 'None', 'Misc'), ('Elegnan', 'None', 'Clothing'), ('Elvas Savel', 'None', 'Drillmaster Service'), ('Erer Darothril', 'None', 'Mage Service'), ('Ery', 'None', 'Misc'), ('Ery', 'None', 'Food'), ('Ery', 'None', 'Drink'), ('Fadase Selvayn', 'None', 'Clothing'), ('Fadase Selvayn', 'None', 'Book'), ('Fadase Selvayn', 'None', 'Misc'), ('Falanaamo', 'None', 'Clothing'), ('Fara', 'None', 'Misc'), ('Fara', 'None', 'Food'), ('Fara', 'None', 'Drink'), ('Felayn Andral', 'None', 'Enchanting'), ('Ferele Athram', 'None', 'Clothing'), ('Ferele Athram', 'None', 'Book'), ('Ferele Athram', 'None', 'Misc'), ('Ferise Varo', 'None', 'Mage Service'), ('Folsi Thendas', 'None', 'Caravaner'), ('Fryfnhild', 'None', 'Clothing'), ('Fryfnhild', 'None', 'Book'), ('Fryfnhild', 'None', 'Misc'), ('Gadela Andus', 'None', 'Clothing'), ('Gadela Andus', 'None', 'Book'), ('Gadela Andus', 'None', 'Misc'), ('Galen Berer', 'None', 'Weapon'), ('Galen Berer', 'None', 'Armor'), ('Galtis Guvron', 'None', 'Alchemy'), ('Galtis Guvron', 'None', 'Ingredient'), ('Galtis Guvron', 'None', 'Apparatus'), ('Galtis Guvron', 'None', 'Weapon'), ('Galtis Guvron', 'None', 'Armor'), ('Galtis Guvron', 'None', 'Clothing'), ('Galtis Guvron', 'None', 'Book'), ('Galtis Guvron', 'None', 'Misc'), ('Garothmuk gro-Muzgub', 'None', 'Weapon'), ('Garothmuk gro-Muzgub', 'None', 'Armor'), ('Gindas Ildram', 'None', 'Clothing'), ('Gindas Ildram', 'None', 'Book'), ('Gindas Ildram', 'None', 'Misc'), ('Goldyn Belaram', 'None', 'Alchemy'), ('Goldyn Belaram', 'None', 'Ingredient'), ('Goldyn Belaram', 'None', 'Apparatus'), ('Goldyn Belaram', 'None', 'Weapon'), ('Goldyn Belaram', 'None', 'Armor'), ('Goldyn Belaram', 'None', 'Clothing'), ('Goldyn Belaram', 'None', 'Book'), ('Goldyn Belaram', 'None', 'Misc'), ('Gomeso Sarano', 'None', 'Clothing'), ('Gomeso Sarano', 'None', 'Book'), ('Gomeso Sarano', 'None', 'Misc'), ('Hakar the Candle', 'None', 'Weapon'), ('Hakar the Candle', 'None', 'Armor'), ('Hannabi Zabynatus', 'None', 'Weapon'), ('Hannabi Zabynatus', 'None', 'Armor'), ('Heifnir', 'None', 'Clothing'), ('Heifnir', 'None', 'Book'), ('Heifnir', 'None', 'Misc'), ('Helviane Desele', 'None', 'Clothing'), ('Helviane Desele', 'None', 'Book'), ('Helviane Desele', 'None', 'Misc'), ('Hetman Abelmawia', 'None', 'Misc'), ('Hjoldir', 'None', 'Alchemy'), ('Hjoldir', 'None', 'Ingredient'), ('Hjoldir', 'None', 'Apparatus'), ('Hjoldir', 'None', 'Weapon'), ('Hjoldir', 'None', 'Armor'), ('Hjoldir', 'None', 'Clothing'), ('Hjoldir', 'None', 'Book'), ('Hjoldir', 'None', 'Misc'), ('Hjotra the Peacock', 'None', 'Alchemy'), ('Hjotra the Peacock', 'None', 'Ingredient'), ('Hjotra the Peacock', 'None', 'Apparatus'), ('Hjotra the Peacock', 'None', 'Weapon'), ('Hjotra the Peacock', 'None', 'Armor'), ('Hjotra the Peacock', 'None', 'Clothing'), ('Hjotra the Peacock', 'None', 'Book'), ('Hjotra the Peacock', 'None', 'Misc'), ('Hodlismod', 'None', 'Weapon'), ('Hodlismod', 'None', 'Armor'), ('Ibarnadad Assirnarari', 'None', 'Alchemy'), ('Ibarnadad Assirnarari', 'None', 'Ingredient'), ('Ibarnadad Assirnarari', 'None', 'Apparatus'), ('Idonea Munia', 'None', 'Healer Service'), ('Irgola', 'None', 'Alchemy'), ('Irgola', 'None', 'Ingredient'), ('Irgola', 'None', 'Apparatus'), ('Irgola', 'None', 'Weapon'), ('Irgola', 'None', 'Armor'), ('Irgola', 'None', 'Clothing'), ('Irgola', 'None', 'Book'), ('Irgola', 'None', 'Misc'), ('Jeanne', 'None', 'Clothing'), ('Jeanne', 'None', 'Book'), ('Jeanne', 'None', 'Misc'), ('Jobasha', 'None', 'Book'), ('Jolda', 'None', 'Alchemy'), ('Jolda', 'None', 'Ingredient'), ('Jolda', 'None', 'Apparatus'), ('JRasha', 'None', 'Healer Service'), ('Leles Birian', 'None', 'Mage Service'), ('Letreius Muco', 'None', 'Healer Service'), ('Llether Vari', 'None', 'Enchanting'), ('Llorayna Sethan', 'None', 'Misc'), ('Llorayna Sethan', 'None', 'Food'), ('Llorayna Sethan', 'None', 'Drink'), ('Lucretinaus Olcinius', 'None', 'Clothing'), ('Lucretinaus Olcinius', 'None', 'Book'), ('Lucretinaus Olcinius', 'None', 'Misc'), ('Mandur Omalen', 'None', 'Clothing'), ('Mandur Omalen', 'None', 'Book'), ('Mandur Omalen', 'None', 'Misc'), ('Manse Andus', 'None', 'Misc'), ('Manse Andus', 'None', 'Food'), ('Manse Andus', 'None', 'Drink'), ('Maren Uvaren', 'None', 'Enchanting'), ('Marsus Tullius', 'None', 'Alchemy'), ('Marsus Tullius', 'None', 'Ingredient'), ('Marsus Tullius', 'None', 'Apparatus'), ('Marsus Tullius', 'None', 'Weapon'), ('Marsus Tullius', 'None', 'Armor'), ('Marsus Tullius', 'None', 'Clothing'), ('Marsus Tullius', 'None', 'Book'), ('Marsus Tullius', 'None', 'Misc'), ('Mathis Dalobar', 'None', 'Alchemy'), ('Mathis Dalobar', 'None', 'Ingredient'), ('Mathis Dalobar', 'None', 'Apparatus'), ('Mathis Dalobar', 'None', 'Weapon'), ('Mathis Dalobar', 'None', 'Armor'), ('Mathis Dalobar', 'None', 'Clothing'), ('Mathis Dalobar', 'None', 'Book'), ('Mathis Dalobar', 'None', 'Misc'), ('Mebestian Ence', 'None', 'Clothing'), ('Mebestian Ence', 'None', 'Book'), ('Mebestian Ence', 'None', 'Misc'), ('Meldor', 'None', 'Weapon'), ('Meldor', 'None', 'Armor'), ('Mevel Fererus', 'None', 'Clothing'), ('Mevel Fererus', 'None', 'Book'), ('Mevel Fererus', 'None', 'Misc'), ('Mevil Molor', 'None', 'Drillmaster Service'), ('Mevure Hlen', 'None', 'Clothing'), ('Milie Hastien', 'None', 'Clothing'), ('Miun-Gei', 'None', 'Enchanting'), ('Moroni Uvelas', 'None', 'Clothing'), ('Moroni Uvelas', 'None', 'Book'), ('Moroni Uvelas', 'None', 'Misc'), ('Mossanon', 'None', 'Alchemy'), ('Mossanon', 'None', 'Ingredient'), ('Mossanon', 'None', 'Apparatus'), ('Mossanon', 'None', 'Weapon'), ('Mossanon', 'None', 'Armor'), ('Mossanon', 'None', 'Clothing'), ('Mossanon', 'None', 'Book'), ('Mossanon', 'None', 'Misc'), ('Mudcrab', 'None', 'Weapon'), ('Mudcrab', 'None', 'Armor'), ('Nalcarya of White Haven', 'None', 'Alchemy'), ('Nalcarya of White Haven', 'None', 'Ingredient'), ('Nalcarya of White Haven', 'None', 'Apparatus'), ('Nalion', 'None', 'Alchemy'), ('Nalion', 'None', 'Ingredient'), ('Nalion', 'None', 'Apparatus'), ('Nalion', 'None', 'Weapon'), ('Nalion', 'None', 'Armor'), ('Nalion', 'None', 'Clothing'), ('Nalion', 'None', 'Book'), ('Nalion', 'None', 'Misc'), ('Nalis Gals', 'None', 'Clothing'), ('Nalis Gals', 'None', 'Book'), ('Nalis Gals', 'None', 'Misc'), ('Nalvilie Saren', 'None', 'Clothing'), ('Navam Veran', 'None', 'Caravaner'), ('Nels Llendo', 'None', 'Thief Service'), ('Nivos Drivam', 'None', 'Clothing'), ('Nivos Drivam', 'None', 'Book'), ('Nivos Drivam', 'None', 'Misc'), ('Only-He-Stands-There', 'None', 'Healer Service'), ('Orns Omaren', 'None', 'Clothing'), ('Orns Omaren', 'None', 'Book'), ('Orns Omaren', 'None', 'Misc'), ('Paur Maston', 'None', 'Alchemy'), ('Paur Maston', 'None', 'Ingredient'), ('Paur Maston', 'None', 'Apparatus'), ('Paur Maston', 'None', 'Weapon'), ('Paur Maston', 'None', 'Armor'), ('Paur Maston', 'None', 'Clothing'), ('Paur Maston', 'None', 'Book'), ('Paur Maston', 'None', 'Misc'), ('Peregrina Cnisia', 'None', 'Weapon'), ('Peregrina Cnisia', 'None', 'Armor'), ('Perien Aurelie', 'None', 'Alchemy'), ('Perien Aurelie', 'None', 'Ingredient'), ('Perien Aurelie', 'None', 'Apparatus'), ('Perien Aurelie', 'None', 'Weapon'), ('Perien Aurelie', 'None', 'Armor'), ('Perien Aurelie', 'None', 'Clothing'), ('Perien Aurelie', 'None', 'Book'), ('Perien Aurelie', 'None', 'Misc'), ('Punibi Yahaz', 'None', 'Caravaner'), ('Radras', 'None', 'Weapon'), ('Radras', 'None', 'Armor'), ('Ralds Oril', 'None', 'Clothing'), ('Ralds Oril', 'None', 'Book'), ('Ralds Oril', 'None', 'Misc'), ('Ranosa Gilvayn', 'None', 'Sorcerer Service'), ('Raril Giral', 'None', 'Misc'), ('Raril Giral', 'None', 'Food'), ('Raril Giral', 'None', 'Drink'), ('Rasha', 'None', 'Alchemy'), ('Rasha', 'None', 'Ingredient'), ('Rasha', 'None', 'Apparatus'), ('Rasha', 'None', 'Weapon'), ('Rasha', 'None', 'Armor'), ('Rasha', 'None', 'Clothing'), ('Rasha', 'None', 'Book'), ('Rasha', 'None', 'Misc'), ('Rathal Barus', 'None', 'Clothing'), ('Rathal Barus', 'None', 'Book'), ('Rathal Barus', 'None', 'Misc'), ('RaVirr', 'None', 'Clothing'), ('RaVirr', 'None', 'Book'), ('RaVirr', 'None', 'Misc'), ('Raviso Andalas', 'None', 'Savant Service'), ('Rolasa Oren', 'None', 'Alchemy'), ('Rolasa Oren', 'None', 'Ingredient'), ('Rolasa Oren', 'None', 'Apparatus'), ('Saetring', 'None', 'Weapon'), ('Saetring', 'None', 'Armor'), ('Saras Orelu', 'None', 'Healer Service'), ('Savile Imayn', 'None', 'Alchemy'), ('Savile Imayn', 'None', 'Ingredient'), ('Savile Imayn', 'None', 'Apparatus'), ('Savile Imayn', 'None', 'Weapon'), ('Savile Imayn', 'None', 'Armor'), ('Savile Imayn', 'None', 'Clothing'), ('Savile Imayn', 'None', 'Book'), ('Savile Imayn', 'None', 'Misc'), ('Seldus Nerendus', 'None', 'Caravaner'), ('Selkirnemus', 'None', 'Clothing'), ('Selkirnemus', 'None', 'Book'), ('Selkirnemus', 'None', 'Misc'), ('Selvil Sareloth', 'None', 'Caravaner'), ('Senyndie', 'None', 'Monk Service'), ('Sevyni Saryon', 'None', 'Savant Service'), ('Shazgob gra-Luzgan', 'None', 'Alchemy'), ('Shazgob gra-Luzgan', 'None', 'Ingredient'), ('Shazgob gra-Luzgan', 'None', 'Apparatus'), ('Shazgob gra-Luzgan', 'None', 'Weapon'), ('Shazgob gra-Luzgan', 'None', 'Armor'), ('Shazgob gra-Luzgan', 'None', 'Clothing'), ('Shazgob gra-Luzgan', 'None', 'Book'), ('Shazgob gra-Luzgan', 'None', 'Misc'), ('Shenk', 'None', 'Misc'), ('Shenk', 'None', 'Food'), ('Shenk', 'None', 'Drink'), ('Ship Captain', 'None', 'Alchemy'), ('Ship Captain', 'None', 'Ingredient'), ('Ship Captain', 'None', 'Apparatus'), ('Ship Captain', 'None', 'Weapon'), ('Ship Captain', 'None', 'Armor'), ('Ship Captain', 'None', 'Clothing'), ('Ship Captain', 'None', 'Book'), ('Ship Captain', 'None', 'Misc'), ('Shulki Ashunbabi', 'None', 'Clothing'), ('Shulki Ashunbabi', 'None', 'Book'), ('Shulki Ashunbabi', 'None', 'Misc'), ('Simine Fralinie', 'None', 'Book'), ('Sinyaramen', 'None', 'Alchemy'), ('Sinyaramen', 'None', 'Ingredient'), ('Sinyaramen', 'None', 'Apparatus'), ('Sinyaramen', 'None', 'Weapon'), ('Sinyaramen', 'None', 'Armor'), ('Sinyaramen', 'None', 'Clothing'), ('Sinyaramen', 'None', 'Book'), ('Sinyaramen', 'None', 'Misc'), ('Sorosi Radobar', 'None', 'Misc'), ('Sorosi Radobar', 'None', 'Food'), ('Sorosi Radobar', 'None', 'Drink'), ('Stentus Tullius', 'None', 'Alchemy'), ('Stentus Tullius', 'None', 'Ingredient'), ('Stentus Tullius', 'None', 'Apparatus'), ('Stentus Tullius', 'None', 'Weapon'), ('Stentus Tullius', 'None', 'Armor'), ('Stentus Tullius', 'None', 'Clothing'), ('Stentus Tullius', 'None', 'Book'), ('Stentus Tullius', 'None', 'Misc'), ('Taren Omothan', 'None', 'Monk Service'), ('Tarhiel', 'None', 'Enchanting'), ('Teris Raledran', 'None', 'Alchemy'), ('Teris Raledran', 'None', 'Ingredient'), ('Teris Raledran', 'None', 'Apparatus'), ('Teris Raledran', 'None', 'Weapon'), ('Teris Raledran', 'None', 'Armor'), ('Teris Raledran', 'None', 'Clothing'), ('Teris Raledran', 'None', 'Book'), ('Teris Raledran', 'None', 'Misc'), ('Tervur Braven', 'None', 'Clothing'), ('Tervur Braven', 'None', 'Book'), ('Tervur Braven', 'None', 'Misc'), ('Thaeril', 'None', 'Misc'), ('Thaeril', 'None', 'Food'), ('Thaeril', 'None', 'Drink'), ('Thongar', 'None', 'Clothing'), ('Thongar', 'None', 'Book'), ('Thongar', 'None', 'Misc'), ('Thorek', 'None', 'Weapon'), ('Thorek', 'None', 'Armor'), ('Tinos Drothan', 'None', 'Alchemy'), ('Tinos Drothan', 'None', 'Ingredient'), ('Tinos Drothan', 'None', 'Apparatus'), ('Tinos Drothan', 'None', 'Weapon'), ('Tinos Drothan', 'None', 'Armor'), ('Tinos Drothan', 'None', 'Clothing'), ('Tinos Drothan', 'None', 'Book'), ('Tinos Drothan', 'None', 'Misc'), ('Tiras Sadus', 'None', 'Clothing'), ('Tiras Sadus', 'None', 'Book'), ('Tiras Sadus', 'None', 'Misc'), ('Tivam Sadri', 'None', 'Priest Service'), ('Tolvone Sarendas', 'None', 'Alchemy'), ('Tolvone Sarendas', 'None', 'Ingredient'), ('Tolvone Sarendas', 'None', 'Apparatus'), ('Tolvone Sarendas', 'None', 'Weapon'), ('Tolvone Sarendas', 'None', 'Armor'), ('Tolvone Sarendas', 'None', 'Clothing'), ('Tolvone Sarendas', 'None', 'Book'), ('Tolvone Sarendas', 'None', 'Misc'), ('Trasteve', 'None', 'Clothing'), ('Trasteve', 'None', 'Book'), ('Trasteve', 'None', 'Misc'), ('Uulernil', 'None', 'Weapon'), ('Uulernil', 'None', 'Armor'), ('Vanjirra', 'None', 'Alchemy'), ('Vanjirra', 'None', 'Ingredient'), ('Vanjirra', 'None', 'Apparatus'), ('Vanjirra', 'None', 'Weapon'), ('Vanjirra', 'None', 'Armor'), ('Vanjirra', 'None', 'Clothing'), ('Vanjirra', 'None', 'Book'), ('Vanjirra', 'None', 'Misc'), ('Vasesius Viciulus', 'None', 'Clothing'), ('Vasesius Viciulus', 'None', 'Book'), ('Vasesius Viciulus', 'None', 'Misc'), ('Vaval Selas', 'None', 'Healer Service'), ('Verara Rendo', 'None', 'Clothing'), ('Verick Gemain', 'None', 'Clothing'), ('Verick Gemain', 'None', 'Book'), ('Verick Gemain', 'None', 'Misc'), ('Vilamon', 'None', 'Alchemy'), ('Vilamon', 'None', 'Ingredient'), ('Vilamon', 'None', 'Apparatus'), ('Vilamon', 'None', 'Weapon'), ('Vilamon', 'None', 'Armor'), ('Vilamon', 'None', 'Clothing'), ('Vilamon', 'None', 'Book'), ('Vilamon', 'None', 'Misc'), ('Zabarbael', 'None', 'Alchemy'), ('Zabarbael', 'None', 'Ingredient'), ('Zabarbael', 'None', 'Apparatus'), ('Zabarbael', 'None', 'Weapon'), ('Zabarbael', 'None', 'Armor'), ('Zabarbael', 'None', 'Clothing'), ('Zabarbael', 'None', 'Book'), ('Zabarbael', 'None', 'Misc'), ('Zebba Benamamat', 'None', 'Clothing'), ('Fonas Retheran', 'Redoran', 'Clothing'), ('Fonas Retheran', 'Redoran', 'Book'), ('Fonas Retheran', 'Redoran', 'Misc'), ('Lliros Tures', 'Redoran', 'Clothing'), ('Lliros Tures', 'Redoran', 'Book'), ('Lliros Tures', 'Redoran', 'Misc'), ('Mavis Nadram', 'Redoran', 'Drillmaster Service'), ('Uvele Berendas', 'Redoran', 'Priest Service'), ('Hlendrisa Seleth', 'Telvanni', 'Enchanting'), ('Llunela Hleran', 'Telvanni', 'Enchanting'), ('Tunila Omavel', 'Telvanni', 'Healer Service'), ('Endryn Llethan', 'Temple', 'Monk Service'), ('Feldrelo Sadri', 'Temple', 'Monk Service'), ('Tharer Rotheloth', 'Temple', 'Monk Service'), ('Tuls Valen', 'Temple', 'Monk Service'), ('Uvoo Llaren', 'Temple', 'Monk Service'), ('Big Helende', 'Thieves Guild', 'Thief Service'), ('Sugar-Lips Habasi', 'Thieves Guild', 'Thief Service')]
+---------
+Friendly response:
+The merchants with the highest rank number based on the provided response are:
+
+1. **Meder Nulen** from the **Camonna Tong** faction, who sells a wide range of items, including Alchemy, Ingredient, Apparatus, Weapon, Armor, Clothing, Book, and Miscellaneous items.
+
+2. **Selvura Andrano** from the **Camonna Tong** faction, also offering a similar range of products like Alchemy, Ingredient, Apparatus, Weapon, Armor, Clothing, Book, and Miscellaneous items.
+
+These merchants offer a variety of goods, largely related to alchemy, armor, and general merchandise, representing the interests of the Camonna Tong faction.
+---------
+---------------------------------------------------------
+Strategy: single_domain_double_shot
+Who is the highest ranked merchant that offers priest services? What is their rank and faction?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+Who can I sell a weapon to within a Fighters Guild?'SELECT m.MerchantName FROM merchant m INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName WHERE m.Faction = 'Fighters Guild' AND mt.ItemType = 'Weapon';'Who is the NPC in the Telvanni faction with the highest rank number, and what is their rank name?'SELECT n.NpcName, f.RankName FROM npc n JOIN faction f ON n.Faction = f.Faction AND n.RankNumber = f.RankNumber WHERE n.Faction = 'Telvanni' ORDER BY n.RankNumber DESC LIMIT 1;' Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Who is the highest ranked merchant that offers priest services? What is their rank and faction?
+---------
+Initial Response:
+```mysql
+SELECT m.MerchantName, f.RankName, m.Faction 
+FROM merchant m 
+JOIN faction f ON m.Faction = f.Faction AND m.RankNumber = f.RankNumber 
+JOIN merchant_types mt ON m.MerchantName = mt.MerchantName 
+WHERE mt.ItemType = 'Priest Service' 
+ORDER BY f.RankNumber DESC 
+LIMIT 1;
+```
+---------
+Fixed Response:
+
+SELECT m.MerchantName, f.RankName, m.Faction 
+FROM merchant m 
+JOIN faction f ON m.Faction = f.Faction AND m.RankNumber = f.RankNumber 
+JOIN merchant_types mt ON m.MerchantName = mt.MerchantName 
+WHERE mt.ItemType = 'Priest Service' 
+ORDER BY f.RankNumber DESC 
+LIMIT 1;
+
+---------
+Raw database response:
+[('Methal Seran', 'Diviner', 'Temple')]
+---------
+Friendly response:
+The highest ranked merchant that offers priest services is Methal Seran, who holds the rank of Diviner and belongs to the Temple faction.
+---------
+---------------------------------------------------------
+Strategy: single_domain_double_shot
+Of the merchants that are also NPCs, which class is most common?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+Who can I sell a weapon to within a Fighters Guild?'SELECT m.MerchantName FROM merchant m INNER JOIN merchant_types mt ON m.MerchantName = mt.MerchantName WHERE m.Faction = 'Fighters Guild' AND mt.ItemType = 'Weapon';'Who is the NPC in the Telvanni faction with the highest rank number, and what is their rank name?'SELECT n.NpcName, f.RankName FROM npc n JOIN faction f ON n.Faction = f.Faction AND n.RankNumber = f.RankNumber WHERE n.Faction = 'Telvanni' ORDER BY n.RankNumber DESC LIMIT 1;' Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Of the merchants that are also NPCs, which class is most common?
+---------
+Initial Response:
+```mysql
+SELECT n.Class, COUNT(*) AS Count
+FROM npc n
+JOIN merchant m ON n.NpcName = m.MerchantName
+GROUP BY n.Class
+ORDER BY Count DESC
+LIMIT 1;
+```
+---------
+Fixed Response:
+
+SELECT n.Class, COUNT(*) AS Count
+FROM npc n
+JOIN merchant m ON n.ID = m.MerchantName
+GROUP BY n.Class
+ORDER BY Count DESC
+LIMIT 1;
+
+---------
+Raw database response:
+[('Trader Service', 57)]
+---------
+Friendly response:
+The most common class among merchants that are also NPCs is "Trader Service," with 57 instances.
+---------

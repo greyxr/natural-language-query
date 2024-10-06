@@ -34,10 +34,9 @@ def execute_query(query):
         with conn.cursor() as cursor:
             result = cursor.execute(query)
             rows = cursor.fetchall()
-            for rows in rows:
-                print(rows)
         cursor.close()
         conn.close()
+        return rows
     else:
         print("Could not connect")
 

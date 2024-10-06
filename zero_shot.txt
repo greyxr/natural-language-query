@@ -1,0 +1,334 @@
+---------------------------------------------------------
+Strategy: zero_shot
+Who can I sell a weapon to within a Fighters Guild?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+ Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Who can I sell a weapon to within a Fighters Guild?
+---------
+Initial Response:
+```mysql
+SELECT merchant.MerchantName 
+FROM merchant
+JOIN merchant_types ON merchant.MerchantName = merchant_types.MerchantName
+WHERE merchant.Faction = 'Fighters Guild' AND merchant_types.ItemType = 'Weapon';
+```
+---------
+Fixed Response:
+
+SELECT merchant.MerchantName 
+FROM merchant
+JOIN merchant_types ON merchant.MerchantName = merchant_types.MerchantName
+WHERE merchant.Faction = 'Fighters Guild' AND merchant_types.ItemType = 'Weapon';
+
+---------
+Raw database response:
+[('Ergnir',), ('Wayn',), ('Hrundi',), ('Lorbumol gro-Aglakh',)]
+---------
+Friendly response:
+You can sell a weapon to the following individuals within a Fighters Guild: Ergnir, Wayn, Hrundi, and Lorbumol gro-Aglakh.
+---------
+---------------------------------------------------------
+Strategy: zero_shot
+Who is the NPC in the Telvanni faction with the highest rank number, and what is their rank name?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+ Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Who is the NPC in the Telvanni faction with the highest rank number, and what is their rank name?
+---------
+Initial Response:
+```mysql
+SELECT n.NpcName, f.RankName
+FROM npc n
+JOIN faction f ON n.Faction = f.Faction AND n.RankNumber = f.RankNumber
+WHERE n.Faction = 'Telvanni'
+ORDER BY n.RankNumber DESC
+LIMIT 1;
+```
+---------
+Fixed Response:
+
+SELECT n.NpcName, f.RankName
+FROM npc n
+JOIN faction f ON n.Faction = f.Faction AND n.RankNumber = f.RankNumber
+WHERE n.Faction = 'Telvanni'
+ORDER BY n.RankNumber DESC
+LIMIT 1;
+
+---------
+Raw database response:
+[('Gothren', 'Archmagister')]
+---------
+Friendly response:
+The NPC in the Telvanni faction with the highest rank number is Gothren, and their rank name is Archmagister.
+---------
+---------------------------------------------------------
+Strategy: zero_shot
+Who is the highest ranking merchant of any faction and where are they?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+ Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Who is the highest ranking merchant of any faction and where are they?
+---------
+Initial Response:
+```mysql
+SELECT m.MerchantName, m.Location, m.Faction, m.RankNumber
+FROM merchant m
+JOIN faction f ON m.Faction = f.Faction AND m.RankNumber = f.RankNumber
+ORDER BY f.RankNumber DESC
+LIMIT 1;
+```
+---------
+Fixed Response:
+
+SELECT m.MerchantName, m.Location, m.Faction, m.RankNumber
+FROM merchant m
+JOIN faction f ON m.Faction = f.Faction AND m.RankNumber = f.RankNumber
+ORDER BY m.RankNumber DESC
+LIMIT 1;
+
+---------
+Raw database response:
+[('Caius Cosades', 'Balmora, Caius Cosades House', 'Blades', 9)]
+---------
+Friendly response:
+The highest ranking merchant of any faction is Caius Cosades, who is located at Caius Cosades House in Balmora. He is part of the Blades faction.
+---------
+---------------------------------------------------------
+Strategy: zero_shot
+Which NPC has the longest name, and what class are they?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+ Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Which NPC has the longest name, and what class are they?
+---------
+Initial Response:
+```mysql
+SELECT NpcName, Class FROM npc ORDER BY LENGTH(NpcName) DESC LIMIT 1;
+```
+---------
+Fixed Response:
+
+SELECT NpcName, Class FROM npc ORDER BY LENGTH(NpcName) DESC LIMIT 1;
+
+---------
+Raw database response:
+[('Morning-Star-Steals-Away-Clouds', 'Slave')]
+---------
+Friendly response:
+The NPC with the longest name is "Morning-Star-Steals-Away-Clouds," and their class is "Slave."
+---------
+---------------------------------------------------------
+Strategy: zero_shot
+Which merchant has the most gold, and what do they sell?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+ Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Which merchant has the most gold, and what do they sell?
+---------
+Initial Response:
+```mysql
+SELECT m.MerchantName, m.AvailableGold, GROUP_CONCAT(mt.ItemType) AS ItemTypes
+FROM merchant m
+JOIN merchant_types mt ON m.MerchantName = mt.MerchantName
+WHERE m.AvailableGold = (SELECT MAX(AvailableGold) FROM merchant)
+GROUP BY m.MerchantName, m.AvailableGold;
+```
+---------
+Fixed Response:
+
+SELECT m.MerchantName, m.AvailableGold, GROUP_CONCAT(mt.ItemType) AS ItemTypes
+FROM merchant m
+JOIN merchant_types mt ON m.MerchantName = mt.MerchantName
+WHERE m.AvailableGold = (SELECT MAX(AvailableGold) FROM merchant)
+GROUP BY m.MerchantName, m.AvailableGold;
+
+---------
+Raw database response:
+[('Mudcrab', 10000, 'Weapon,Armor')]
+---------
+Friendly response:
+The merchant with the most gold is the Mudcrab, and they sell weapons and armor.
+---------
+---------------------------------------------------------
+Strategy: zero_shot
+What is the rank name of the highest ranking NPC within the faction containing the least number of npcs? Who are they? What is their faction?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+ Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: What is the rank name of the highest ranking NPC within the faction containing the least number of npcs? Who are they? What is their faction?
+---------
+Initial Response:
+```sql
+SELECT f.RankName, n.NpcName, n.Faction
+FROM npc n
+JOIN (
+    SELECT Faction
+    FROM npc
+    GROUP BY Faction
+    ORDER BY COUNT(*) ASC
+    LIMIT 1
+) AS leastFaction ON n.Faction = leastFaction.Faction
+JOIN faction f ON n.Faction = f.Faction AND n.RankNumber = f.RankNumber
+ORDER BY n.RankNumber DESC
+LIMIT 1;
+```
+---------
+Fixed Response:
+
+SELECT f.RankName, n.NpcName, n.Faction
+FROM npc n
+JOIN (
+    SELECT Faction
+    FROM npc
+    GROUP BY Faction
+    ORDER BY COUNT(*) ASC
+    LIMIT 1
+) AS leastFaction ON n.Faction = leastFaction.Faction
+JOIN faction f ON n.Faction = f.Faction AND n.RankNumber = f.RankNumber
+ORDER BY n.RankNumber DESC
+LIMIT 1;
+
+---------
+Raw database response:
+[(None, 'Oritius Maro', 'Talos Cult')]
+---------
+Friendly response:
+The highest ranking NPC within the faction containing the least number of NPCs is Oritius Maro. They are part of the Talos Cult faction. The rank name is not provided in the database response.
+---------
+---------------------------------------------------------
+Strategy: zero_shot
+Who are the merchants with the highest rank number, and what do they sell? What are their factions?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+ Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Who are the merchants with the highest rank number, and what do they sell? What are their factions?
+---------
+Initial Response:
+```mysql
+SELECT m.MerchantName, m.Faction, m.RankNumber, GROUP_CONCAT(mt.ItemType SEPARATOR ', ') AS ItemTypes
+FROM merchant m
+JOIN merchant_types mt ON m.MerchantName = mt.MerchantName
+WHERE m.RankNumber = (SELECT MAX(RankNumber) FROM merchant)
+GROUP BY m.MerchantName, m.Faction, m.RankNumber;
+```
+---------
+Fixed Response:
+
+SELECT m.MerchantName, m.Faction, m.RankNumber, GROUP_CONCAT(mt.ItemType SEPARATOR ', ') AS ItemTypes
+FROM merchant m
+JOIN merchant_types mt ON m.MerchantName = mt.MerchantName
+WHERE m.RankNumber = (SELECT MAX(RankNumber) FROM merchant)
+GROUP BY m.MerchantName, m.Faction, m.RankNumber;
+
+---------
+Raw database response:
+[('Caius Cosades', 'Blades', 9, 'Monk Service')]
+---------
+Friendly response:
+The merchant with the highest rank number is Caius Cosades. He is affiliated with the Blades faction and he provides Monk Service.
+---------
+---------------------------------------------------------
+Strategy: zero_shot
+Who is the highest ranked merchant that offers priest services? What is their rank and faction?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+ Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Who is the highest ranked merchant that offers priest services? What is their rank and faction?
+---------
+Initial Response:
+```mysql
+SELECT m.MerchantName, m.Faction, m.RankNumber 
+FROM merchant m
+JOIN merchant_types mt ON m.MerchantName = mt.MerchantName
+WHERE mt.ItemType = 'Priest Service'
+ORDER BY m.RankNumber DESC
+LIMIT 1;
+```
+---------
+Fixed Response:
+
+SELECT m.MerchantName, m.Faction, m.RankNumber 
+FROM merchant m
+JOIN merchant_types mt ON m.MerchantName = mt.MerchantName
+WHERE mt.ItemType = 'Priest Service'
+ORDER BY m.RankNumber DESC
+LIMIT 1;
+
+---------
+Raw database response:
+[('Methal Seran', 'Temple', 7)]
+---------
+Friendly response:
+The highest ranked merchant that offers priest services is Methal Seran. Their rank is 7, and they belong to the Temple faction.
+---------
+---------------------------------------------------------
+Strategy: zero_shot
+Of the merchants that are also NPCs, which class is most common?
+
+---------
+Content:
+CREATE TABLE faction (Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,RankName VARCHAR(30),Primary Key (Faction, RankNumber),CHECK (RankNumber <= 9));
+CREATE TABLE npc (ID VARCHAR(30) PRIMARY KEY,NpcName VARCHAR(60) NOT NULL,NpcLevel INT UNSIGNED NOT NULL,Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,Class VARCHAR(30),Race VARCHAR(30) NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant (MerchantName VARCHAR(30) PRIMARY KEY,AvailableGold INT UNSIGNED,Location VARCHAR(300),Faction VARCHAR(30),RankNumber TINYINT UNSIGNED NOT NULL,FOREIGN KEY (Faction, RankNumber) REFERENCES Faction(Faction, RankNumber));
+CREATE TABLE merchant_types (MerchantName VARCHAR(30),ItemType ENUM('Alchemy','Ingredient','Apparatus','Weapon','Armor','Clothing','Book','Misc','Enchanting', 'Assassin Service', 'Healer Service', 'Wise Woman Service', 'Food', 'Drink', 'Priest Service', 'Battlemage Service', 'Caravaner', 'Drillmaster Service', 'Mage Service', 'Monk Service', 'Savant Service', 'Nightblade Service', 'Sorcerer Service', 'Thief Service') NOT NULL,PRIMARY KEY (MerchantName, ItemType),FOREIGN KEY (MerchantName) REFERENCES Merchant(MerchantName));
+ Give me a MySQL select statement that answers the question. Only respond with mysql syntax. If there is an error do not explain it! Question: Of the merchants that are also NPCs, which class is most common?
+---------
+Initial Response:
+```mysql
+SELECT npc.Class, COUNT(*) AS Count
+FROM npc
+JOIN merchant ON npc.NpcName = merchant.MerchantName
+GROUP BY npc.Class
+ORDER BY Count DESC
+LIMIT 1;
+```
+---------
+Fixed Response:
+
+SELECT npc.Class, COUNT(*) AS Count
+FROM npc
+JOIN merchant ON npc.ID = merchant.MerchantName
+GROUP BY npc.Class
+ORDER BY Count DESC
+LIMIT 1;
+
+---------
+Raw database response:
+[('Trader Service', 57)]
+---------
+Friendly response:
+The most common class among merchants who are also NPCs is "Trader Service," with 57 instances.
+---------
